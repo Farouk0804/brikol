@@ -818,3 +818,64 @@
     border-color: #1E40AF;
     color: #93C5FD;
 }
+
+/* ===== MOBILE-FIRST POLISH ===== */
+@media (max-width: 768px) {
+    .pj-wrapper { padding: 80px 16px 100px; }
+    .pj-header { padding: 0 0 20px; }
+    .pj-header-label { font-size: 0.75rem; }
+    .pj-header-title { font-size: 1.5rem; line-height: 1.25; }
+    .pj-header-sub { font-size: 0.9rem; }
+    .pj-progress { margin-bottom: 28px; }
+    .pj-step-dots { gap: 4px; }
+    .pj-dot { width: 28px; height: 28px; font-size: 0.75rem; }
+    .pj-step-labels { font-size: 0.7rem; }
+
+    /* Service choice — bigger tap area, single col on small phones */
+    .service-choice { padding: 18px 14px; min-height: 110px; }
+    .service-choice-icon { font-size: 2rem; }
+    .service-choice-name { font-size: 0.95rem; }
+    .service-choice-desc { font-size: 0.78rem; }
+
+    /* Inputs — better tap targets */
+    .pj-textarea { padding: 14px; font-size: 0.95rem; min-height: 120px; }
+    .pj-input { padding: 14px; font-size: 0.95rem; }
+    .pj-label { font-size: 0.9rem; }
+    .pj-hint { font-size: 0.8rem; }
+
+    /* Sticky bottom nav on mobile */
+    .pj-nav {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background: var(--white);
+        padding: 12px 16px;
+        border-top: 1px solid var(--gray-100);
+        z-index: 50;
+        margin: 0;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    }
+    .pj-nav .btn { flex: 1; padding: 14px; font-size: 0.95rem; }
+
+    /* Photo upload */
+    .pj-upload-area { padding: 32px 16px; }
+
+    /* Date options */
+    .pj-date-grid { gap: 10px; }
+    .pj-date-opt { padding: 14px 10px; }
+
+    /* Budget */
+    .pj-budget-wrap { padding: 4px; }
+    .pj-budget-input { font-size: 1.2rem; padding: 12px; }
+}
+
+@media (max-width: 480px) {
+    .service-grid { grid-template-columns: 1fr !important; gap: 10px; }
+    .service-choice { min-height: 80px; flex-direction: row; gap: 14px; text-align: left; }
+    .service-choice-icon { font-size: 1.8rem; margin: 0; }
+    .service-choice-text { flex: 1; }
+    .pj-header-title { font-size: 1.3rem; }
+    .pj-step-labels { display: none; }
+    .pj-dot { width: 24px; height: 24px; font-size: 0.7rem; }
+}
+
+[data-theme="dark"] .pj-nav { background: #1E293B; border-color: #334155; }
