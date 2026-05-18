@@ -1396,9 +1396,10 @@ body { overflow-x: hidden; }
 @media (max-width: 768px) {
     /* Hero — punchier on mobile */
     .hero {
-        padding: 90px 0 40px;
+        padding: 120px 0 40px;
         min-height: auto;
     }
+    .hero-badge { margin-bottom: 20px; margin-top: 8px; }
     .hero-title {
         font-size: clamp(1.85rem, 7vw, 2.5rem);
         line-height: 1.15;
