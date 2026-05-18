@@ -1391,3 +1391,91 @@ body { overflow-x: hidden; }
 @media (max-width: 480px) {
     .footer-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
 }
+
+/* ===== MOBILE-FIRST HOMEPAGE POLISH ===== */
+@media (max-width: 768px) {
+    /* Hero — punchier on mobile */
+    .hero {
+        padding: 90px 0 40px;
+        min-height: auto;
+    }
+    .hero-title {
+        font-size: clamp(1.85rem, 7vw, 2.5rem);
+        line-height: 1.15;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+    .hero-badge { font-size: 0.75rem; }
+
+    /* Search bar — cleaner mobile look */
+    .search-bar {
+        padding: 12px;
+        gap: 10px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .search-field {
+        padding: 14px 16px;
+        background: var(--gray-100);
+        border-radius: 10px;
+    }
+    .search-field label {
+        font-size: 0.7rem;
+        margin-bottom: 2px;
+    }
+    .search-select { font-size: 0.9rem; }
+    .search-btn {
+        padding: 14px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+
+    /* Section headings — tighter */
+    section h2,
+    .section-title { font-size: 1.5rem !important; }
+    .section-subtitle { font-size: 0.9rem !important; }
+    section { padding: 60px 0 !important; }
+
+    /* Service cards — tighter, more thumb-friendly */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+        padding: 0 16px;
+    }
+    .service-card-inner { padding: 22px 20px; gap: 12px; }
+    .service-card h3 { font-size: 1.15rem; }
+    .service-card p { font-size: 0.85rem; }
+    .service-list li { font-size: 0.85rem; }
+
+    /* Stats — bigger, more legible */
+    .stats-grid { gap: 12px; padding: 0 16px; }
+    .stat-number { font-size: 1.8rem !important; }
+    .stat-label { font-size: 0.75rem !important; }
+
+    /* Steps */
+    .step-card { max-width: 360px; padding: 24px 20px; }
+    .step-card h3 { font-size: 1.05rem; }
+
+    /* Testimonials */
+    .testimonial-card { padding: 24px 20px; }
+    .testimonial-text { font-size: 0.9rem; line-height: 1.6; }
+
+    /* Become a Pro */
+    .become-pro-content h2 { font-size: 1.6rem; }
+    .become-pro-content p { font-size: 0.95rem; }
+    .pro-benefits { gap: 12px; }
+    .pro-benefit { font-size: 0.9rem; }
+
+    /* Container padding */
+    .container { padding-left: 16px; padding-right: 16px; }
+}
+
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.7rem; }
+    .hero-cta-row { flex-direction: column; gap: 10px; }
+    .hero-cta-row .btn { width: 100%; }
+    section h2 { font-size: 1.35rem !important; }
+}
