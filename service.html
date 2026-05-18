@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Pros near you — Brikol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="service.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                
+                <img src="logo.svg" height="36" alt="Brikol">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#how-it-works">How it works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="signup-pro.html" class="nav-tasker">Become a Pro</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html#how-it-works">How it works</a>
+            <a href="index.html#services">Services</a>
+            <a href="signup-pro.html">Become a Pro</a>
+            <div class="mobile-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Hero -->
+    <section class="service-hero" id="serviceHero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <span id="breadcrumbService">Cleaning</span>
+            </div>
+            <div class="service-hero-inner">
+                <div class="service-hero-text">
+                    <div class="service-hero-emoji" id="heroEmoji">🧹</div>
+                    <div>
+                        <h1 id="heroTitle">Cleaning Pros near you</h1>
+                        <p id="heroSubtitle">Browse verified cleaners in your city — read reviews, compare prices, and book instantly.</p>
+                    </div>
+                </div>
+                <!-- Inline filter bar -->
+                <div class="hero-filters">
+                    <select class="filter-select" id="cityFilter">
+                        <option value="">📍 All cities</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="marrakech">Marrakech</option>
+                        <option value="fes">Fès</option>
+                        <option value="tanger">Tanger</option>
+                        <option value="agadir">Agadir</option>
+                        <option value="meknes">Meknès</option>
+                        <option value="oujda">Oujda</option>
+                    </select>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="rating">⭐ Top rated</option>
+                        <option value="jobs">🏆 Most jobs done</option>
+                        <option value="reviews">💬 Most reviewed</option>
+                    </select>
+                    <select class="filter-select" id="availFilter">
+                        <option value="">🗓 Any availability</option>
+                        <option value="today">Available today</option>
+                        <option value="tomorrow">Available tomorrow</option>
+                        <option value="weekend">This weekend</option>
+                    </select>
+                    <button class="btn btn-primary filter-apply-btn" onclick="applyFilters()">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <div class="service-main container">
+
+        <!-- Sidebar filters -->
+        <aside class="sidebar">
+
+            <div class="sidebar-section">
+                <h3>Minimum rating</h3>
+                <div class="rating-options">
+                    <label class="radio-option">
+                        <input type="radio" name="rating" value="0" checked>
+                        <span>Any rating</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="rating" value="4">
+                        <span>⭐ 4.0 & above</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="rating" value="4.5">
+                        <span>⭐ 4.5 & above</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="rating" value="4.8">
+                        <span>⭐ 4.8 & above</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Pro quality</h3>
+                <div class="toggle-options">
+                    <label class="toggle-option">
+                        <div class="toggle-option-text">
+                            <span class="toggle-option-label">✅ Verified only</span>
+                            <span class="toggle-option-sub">ID confirmed by Brikol</span>
+                        </div>
+                        <input type="checkbox" id="filterVerified" class="toggle-check">
+                    </label>
+                    <label class="toggle-option">
+                        <div class="toggle-option-text">
+                            <span class="toggle-option-label">⭐ Elite Pros only</span>
+                            <span class="toggle-option-sub">150+ jobs, 90%+ acceptance</span>
+                        </div>
+                        <input type="checkbox" id="filterElite" class="toggle-check">
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-outline btn-full" onclick="resetFilters()">Reset filters</button>
+        </aside>
+
+        <!-- Pro listings -->
+        <div class="listings-area">
+
+            <div class="listings-header">
+                <div class="listings-count" id="listingsCount">Showing 8 professionals</div>
+                <div class="view-toggle">
+                    <button class="view-btn active" id="gridViewBtn" onclick="setView('grid')" title="Grid view">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    </button>
+                    <button class="view-btn" id="listViewBtn" onclick="setView('list')" title="List view">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="4" width="18" height="3" rx="1"/><rect x="3" y="10.5" width="18" height="3" rx="1"/><rect x="3" y="17" width="18" height="3" rx="1"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pro cards grid -->
+            <div class="pros-grid" id="prosGrid">
+                <!-- Generated by JS -->
+            </div>
+
+            <!-- Load more -->
+            <div class="load-more-area">
+                <button class="btn btn-outline load-more-btn" id="loadMoreBtn" onclick="loadMore()">
+                    Load more Pros
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Trust strip -->
+    <section class="trust-strip">
+        <div class="container trust-strip-inner">
+            <div class="trust-strip-item">
+                <span>🛡️</span>
+                <div>
+                    <strong>Every Pro is verified</strong>
+                    <p>ID-checked and background-screened</p>
+                </div>
+            </div>
+            <div class="trust-strip-item">
+                <span>💬</span>
+                <div>
+                    <strong>Real reviews only</strong>
+                    <p>From customers who actually booked</p>
+                </div>
+            </div>
+            <div class="trust-strip-item">
+                <span>🔄</span>
+                <div>
+                    <strong>Free rebooking</strong>
+                    <p>Not satisfied? We'll send another Pro</p>
+                </div>
+            </div>
+            <div class="trust-strip-item">
+                <span>💳</span>
+                <div>
+                    <strong>Secure payment</strong>
+                    <p>Pay only after the job is done</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        
+                        <img src="logo.svg" height="36" alt="Brikol">
+                    </div>
+                    <p>The easiest way to find trusted home service professionals in Morocco.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service.html?type=cleaning">Cleaning</a></li>
+                        <li><a href="service.html?type=plumbing">Plumbing</a></li>
+                        <li><a href="service.html?type=electricity">Electrical</a></li>
+                        <li><a href="service.html?type=furniture">Furniture Assembly</a></li>
+                        <li><a href="service.html?type=painting">Painting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">About us</a></li>
+                        <li><a href="index.html#how-it-works">How it works</a></li>
+                        <li><a href="signup-pro.html">Become a Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help center</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="#">Casablanca</a></li>
+                        <li><a href="#">Rabat</a></li>
+                        <li><a href="#">Marrakech</a></li>
+                        <li><a href="#">Fès</a></li>
+                        <li><a href="#">Tanger</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Brikol. All rights reserved.</p>
+                <p class="footer-lang">Available in English · العربية · Français</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth-state.js"></script>
+    <script src="script.js"></script>
+    <script src="pros-data.js"></script>
+    <script src="service.js"></script>
+</body>
+</html>

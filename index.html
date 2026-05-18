@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brikol - Book trusted home service professionals in Morocco. Cleaning, plumbing, and electrical services at your fingertips.">
+    <title>Brikol — Home Services in Morocco</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                
+                <img src="logo.svg" height="36" alt="Brikol">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How it works</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#become-tasker" class="nav-tasker">Become a Pro</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">عر</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#how-it-works">How it works</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#become-tasker">Become a Pro</a>
+            <div class="mobile-actions">
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-blob blob-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🇲🇦 Available across Morocco</div>
+                <h1 class="hero-title">
+                    Home services,<br>
+                    <span class="highlight">done right.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Book verified local professionals for cleaning, plumbing, and electrical work — fast, affordable, and reliable.
+                </p>
+
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <div class="search-field">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                        <select class="search-select" id="serviceSelect">
+                            <option value="">What do you need?</option>
+                            <option value="cleaning">🧹 Cleaning</option>
+                            <option value="plumbing">🔧 Plumbing</option>
+                            <option value="electricity">⚡ Electrical</option>
+                            <option value="furniture">🪑 Furniture Assembly</option>
+                            <option value="painting">🖌️ Painting</option>
+                        </select>
+                    </div>
+                    <div class="search-divider"></div>
+                    <div class="search-field">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <select class="search-select" id="citySelect">
+                            <option value="">Select your city</option>
+                            <option value="casablanca">Casablanca</option>
+                            <option value="rabat">Rabat</option>
+                            <option value="marrakech">Marrakech</option>
+                            <option value="fes">Fès</option>
+                            <option value="tanger">Tanger</option>
+                            <option value="agadir">Agadir</option>
+                            <option value="meknes">Meknès</option>
+                            <option value="oujda">Oujda</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary search-btn" onclick="handleSearch()">
+                        Find a Pro
+                    </button>
+                </div>
+                <div style="margin-top:14px; text-align:center;">
+                    <span style="font-size:0.85rem; color:rgba(255,255,255,0.65);">Or </span>
+                    <a href="post-job.html" style="font-size:0.85rem; font-weight:700; color:white; text-decoration:underline; text-underline-offset:3px;">post your job and let Pros come to you →</a>
+                </div>
+
+                <div class="hero-trust">
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Verified professionals
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Secure payments
+                    </div>
+                    <div class="trust-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        WhatsApp updates
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="booking-card">
+                    <div class="booking-card-header">
+                        <div class="pro-avatar">A</div>
+                        <div class="pro-info">
+                            <div class="pro-name">Ahmed K.</div>
+                            <div class="pro-role">Plumbing Expert</div>
+                        </div>
+                        <div class="pro-rating">⭐ 4.9</div>
+                    </div>
+                    <div class="booking-card-body">
+                        <div class="booking-detail">
+                            <span class="detail-label">Service</span>
+                            <span class="detail-value">Pipe Repair</span>
+                        </div>
+                        <div class="booking-detail">
+                            <span class="detail-label">Date</span>
+                            <span class="detail-value">Today, 3:00 PM</span>
+                        </div>
+                        <div class="booking-detail">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">Casablanca, Maarif</span>
+                        </div>
+                        <div class="booking-status">
+                            <span class="status-dot"></span>
+                            Pro is on the way
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-badge badge-reviews">
+                    <span class="badge-stars">★★★★★</span>
+                    <span class="badge-text">"Excellent work!"</span>
+                </div>
+
+                <div class="floating-badge badge-book">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                    Booked in 2 minutes
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="1200">0</div>
+                <div class="stat-label">Verified Pros</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="8">0</div>
+                <div class="stat-label">Cities</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="15000">0</div>
+                <div class="stat-label">Jobs Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="98">0</div>
+                <div class="stat-label">% Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Simple process</div>
+                <h2 class="section-title">How Brikol works</h2>
+                <p class="section-subtitle">Get help at home in 3 easy steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">🔍</div>
+                    <h3>Choose a service</h3>
+                    <p>Tell us what you need — cleaning, plumbing, or electrical. Pick your city and preferred date.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">👤</div>
+                    <h3>Pick your Pro</h3>
+                    <p>Browse verified professionals nearby. Read real reviews and compare prices before you book.</p>
+                </div>
+                <div class="step-connector"></div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">✅</div>
+                    <h3>Get it done</h3>
+                    <p>Your Pro arrives on time, completes the work, and you pay securely through the app. Simple.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">What we offer</div>
+                <h2 class="section-title">Our services</h2>
+                <p class="section-subtitle">Expert professionals for every home need</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-service="cleaning">
+                    <div class="service-card-inner">
+                        <div class="service-emoji">🧹</div>
+                        <div class="service-color-bar cleaning-bar"></div>
+                        <h3>Cleaning</h3>
+                        <p>Deep cleaning, regular maintenance, post-construction cleanup, and more.</p>
+                        <ul class="service-list">
+                            <li>Home & apartment cleaning</li>
+                            <li>Deep cleaning</li>
+                            <li>Office cleaning</li>
+                            <li>Post-renovation cleanup</li>
+                        </ul>
+                        <a href="service.html?type=cleaning" class="btn btn-outline">Book Cleaning</a>
+                    </div>
+                </div>
+
+                <div class="service-card featured-service" data-service="plumbing">
+                    <div class="featured-badge">Most Booked</div>
+                    <div class="service-card-inner">
+                        <div class="service-emoji">🔧</div>
+                        <div class="service-color-bar plumbing-bar"></div>
+                        <h3>Plumbing</h3>
+                        <p>Fast response for leaks, installations, and all plumbing repairs — available 7 days a week.</p>
+                        <ul class="service-list">
+                            <li>Leak detection & repair</li>
+                            <li>Pipe installation</li>
+                            <li>Water heater service</li>
+                            <li>Drain cleaning</li>
+                        </ul>
+                        <a href="service.html?type=plumbing" class="btn btn-outline">Book Plumber</a>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="electricity">
+                    <div class="service-card-inner">
+                        <div class="service-emoji">⚡</div>
+                        <div class="service-color-bar electricity-bar"></div>
+                        <h3>Electrical</h3>
+                        <p>Safe and certified electricians for installations, repairs, and inspections.</p>
+                        <ul class="service-list">
+                            <li>Wiring & rewiring</li>
+                            <li>Light & outlet installation</li>
+                            <li>Circuit breaker repair</li>
+                            <li>Safety inspections</li>
+                        </ul>
+                        <a href="service.html?type=electricity" class="btn btn-outline">Book Electrician</a>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="furniture">
+                    <div class="service-card-inner">
+                        <div class="service-emoji">🪑</div>
+                        <div class="service-color-bar furniture-bar"></div>
+                        <h3>Furniture Assembly</h3>
+                        <p>Fast and careful assembly of all furniture — IKEA, local brands, and everything in between.</p>
+                        <ul class="service-list">
+                            <li>IKEA & flat-pack assembly</li>
+                            <li>Wardrobe & shelving</li>
+                            <li>Beds & bed frames</li>
+                            <li>Office furniture</li>
+                        </ul>
+                        <a href="service.html?type=furniture" class="btn btn-outline">Book Assembly</a>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="painting">
+                    <div class="service-card-inner">
+                        <div class="service-emoji">🖌️</div>
+                        <div class="service-color-bar painting-bar"></div>
+                        <h3>Painting</h3>
+                        <p>Professional painters for walls, rooms, and full apartments — clean finish guaranteed.</p>
+                        <ul class="service-list">
+                            <li>Interior wall painting</li>
+                            <li>Full room & apartment</li>
+                            <li>Touch-ups & repairs</li>
+                            <li>Exterior painting</li>
+                        </ul>
+                        <a href="service.html?type=painting" class="btn btn-outline">Book Painter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Brikol -->
+    <section class="why-section">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content">
+                    <div class="section-tag">Why Brikol</div>
+                    <h2 class="section-title">We take the stress out of finding help</h2>
+                    <p class="section-subtitle">Every professional on Brikol is background-checked, reviewed by real customers, and held to a high standard.</p>
+                    <div class="why-features">
+                        <div class="why-feature">
+                            <div class="why-icon">🛡️</div>
+                            <div>
+                                <h4>Verified & trusted</h4>
+                                <p>Every Pro goes through ID verification and background checks before joining.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-icon">⏱️</div>
+                            <div>
+                                <h4>Book in minutes</h4>
+                                <p>No phone tag, no waiting. Book online and get confirmed instantly.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-icon">💬</div>
+                            <div>
+                                <h4>WhatsApp updates</h4>
+                                <p>Get real-time updates from your Pro directly on WhatsApp — the way Moroccans communicate.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-icon">💳</div>
+                            <div>
+                                <h4>Flexible payments</h4>
+                                <p>Pay by card, cash, or mobile payment. Transparent pricing with no surprises.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-visual">
+                    <div class="pro-cards-stack">
+                        <div class="pro-card">
+                            <div class="pro-card-avatar" style="background:#DBEAFE">F</div>
+                            <div class="pro-card-info">
+                                <div class="pro-card-name">Fatima B.</div>
+                                <div class="pro-card-specialty">Professional Cleaner</div>
+                                <div class="pro-card-meta">
+                                    <span>⭐ 4.8</span>
+                                    <span>124 jobs</span>
+                                    <span class="pro-badge">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-card">
+                            <div class="pro-card-avatar" style="background:#D1FAE5">Y</div>
+                            <div class="pro-card-info">
+                                <div class="pro-card-name">Youssef M.</div>
+                                <div class="pro-card-specialty">Master Plumber</div>
+                                <div class="pro-card-meta">
+                                    <span>⭐ 4.9</span>
+                                    <span>89 jobs</span>
+                                    <span class="pro-badge">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-card">
+                            <div class="pro-card-avatar" style="background:#FEF3C7">K</div>
+                            <div class="pro-card-info">
+                                <div class="pro-card-name">Khalid O.</div>
+                                <div class="pro-card-specialty">Certified Electrician</div>
+                                <div class="pro-card-meta">
+                                    <span>⭐ 5.0</span>
+                                    <span>67 jobs</span>
+                                    <span class="pro-badge">Verified</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Reviews</div>
+                <h2 class="section-title">What our customers say</h2>
+                <p class="section-subtitle">Real reviews from people across Morocco</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Booked a plumber on a Sunday evening and he arrived within an hour. Fixed the leak quickly and the price was fair. This app is amazing!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">N</div>
+                        <div>
+                            <strong>Nadia R.</strong>
+                            <span>Casablanca</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card featured-testimonial">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"The cleaner was professional, on time, and my apartment has never been this clean. I've already booked a second appointment!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <strong>Mehdi A.</strong>
+                            <span>Rabat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p>"Finally a reliable way to find electricians in Marrakech. The WhatsApp updates were a nice touch — I always knew when he was coming."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <strong>Sara E.</strong>
+                            <span>Marrakech</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Become a Pro -->
+    <section class="become-pro" id="become-tasker">
+        <div class="container">
+            <div class="become-pro-grid">
+                <div class="become-pro-content">
+                    <div class="section-tag tag-light">For professionals</div>
+                    <h2>Turn your skills into income</h2>
+                    <p>Join Brikol as a Pro and get access to thousands of customers across Morocco. Set your own hours, choose your jobs, and get paid securely.</p>
+                    <ul class="pro-benefits">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            Free to sign up — no monthly fees
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            Set your own prices and schedule
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            Get paid directly and securely
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                            Build your reputation with reviews
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-white">Apply as a Pro</a>
+                </div>
+                <div class="become-pro-visual">
+                    <div class="earnings-card">
+                        <div class="earnings-title">Your earnings this month</div>
+                        <div class="earnings-amount">4,850 MAD</div>
+                        <div class="earnings-bar-container">
+                            <div class="earnings-bar-label">
+                                <span>Goal: 6,000 MAD</span>
+                                <span>81%</span>
+                            </div>
+                            <div class="earnings-track">
+                                <div class="earnings-fill" style="width: 81%"></div>
+                            </div>
+                        </div>
+                        <div class="earnings-jobs">
+                            <div class="earnings-stat">
+                                <div class="earnings-stat-num">23</div>
+                                <div class="earnings-stat-label">Jobs done</div>
+                            </div>
+                            <div class="earnings-stat">
+                                <div class="earnings-stat-num">4.9</div>
+                                <div class="earnings-stat-label">Avg rating</div>
+                            </div>
+                            <div class="earnings-stat">
+                                <div class="earnings-stat-num">100%</div>
+                                <div class="earnings-stat-label">On time</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download -->
+    <section class="app-section">
+        <div class="container">
+            <div class="app-content">
+                <div class="section-tag">Coming soon</div>
+                <h2>The Brikol app is coming</h2>
+                <p>Get notified when we launch on iOS and Android. Be among the first to book services on the go.</p>
+                <form class="notify-form" id="notifyForm">
+                    <input type="email" placeholder="Enter your email" class="notify-input" required>
+                    <button type="submit" class="btn btn-primary">Notify me</button>
+                </form>
+                <div class="app-badges">
+                    <div class="app-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                        App Store
+                    </div>
+                    <div class="app-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.2.11.43.14.64.08l11.34-6.55-2.54-2.54-9.44 9.01zM.5 1.18C.2 1.47 0 1.97 0 2.66v18.68c0 .69.2 1.19.5 1.48l.08.07 10.47-10.47v-.25L.58 1.11.5 1.18zM20.89 10.07l-2.89-1.67-2.84 2.84 2.84 2.84 2.91-1.68c.83-.48.83-1.26-.02-1.33zM3.82.24L15.16 6.79l-2.54 2.54L3.18.31c.2-.06.44-.03.64.08v-.15z"/></svg>
+                        Google Play
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        
+                        <img src="logo.svg" height="36" alt="Brikol">
+                    </div>
+                    <p>The easiest way to find trusted home service professionals in Morocco.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">WhatsApp</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="service.html?type=cleaning">Cleaning</a></li>
+                        <li><a href="service.html?type=plumbing">Plumbing</a></li>
+                        <li><a href="service.html?type=electricity">Electrical</a></li>
+                        <li><a href="service.html?type=furniture">Furniture Assembly</a></li>
+                        <li><a href="service.html?type=painting">Painting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="signup-pro.html">Become a Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help center</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Cities</h4>
+                    <ul>
+                        <li><a href="#">Casablanca</a></li>
+                        <li><a href="#">Rabat</a></li>
+                        <li><a href="#">Marrakech</a></li>
+                        <li><a href="#">Fès</a></li>
+                        <li><a href="#">Tanger</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Brikol. All rights reserved.</p>
+                <p class="footer-lang">Available in English · العربية · Français</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth-state.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

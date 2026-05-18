@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Profile — Brikol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pro-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" height="36" alt="Brikol">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#how-it-works">How it works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="signup-pro.html" class="nav-tasker">Become a Pro</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html#how-it-works">How it works</a>
+            <a href="index.html#services">Services</a>
+            <a href="signup-pro.html">Become a Pro</a>
+            <div class="mobile-actions">
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-wrapper container">
+
+        <!-- LEFT: Main content -->
+        <div class="profile-main">
+
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="service.html?type=cleaning" id="breadcrumbService">Cleaning</a>
+                <span>›</span>
+                <span id="breadcrumbName">Fatima B.</span>
+            </div>
+
+            <!-- Profile header card -->
+            <div class="profile-header-card">
+                <div class="profile-avatar-wrap">
+                    <div class="profile-avatar" id="proAvatar">F</div>
+                    <div class="profile-online-dot" title="Available today"></div>
+                </div>
+
+                <div class="profile-header-info">
+                    <div class="profile-name-row">
+                        <h1 id="proName">Fatima B.</h1>
+                        <div class="profile-elite-badge" id="eliteBadge" style="display:none">⭐ Elite Pro</div>
+                    </div>
+                    <div class="profile-specialty" id="proSpecialty">Home Cleaner · 5 yrs exp</div>
+                    <div class="profile-location" id="proLocation">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        Casablanca, Morocco
+                    </div>
+
+                    <div class="profile-stats-row">
+                        <div class="profile-stat">
+                            <span class="stat-stars">★★★★★</span>
+                            <strong id="proRating">4.9</strong>
+                            <span id="proReviews">(124 reviews)</span>
+                        </div>
+                        <div class="profile-stat-divider"></div>
+                        <div class="profile-stat">
+                            <strong id="proJobs">187</strong>
+                            <span>jobs done</span>
+                        </div>
+                    </div>
+
+                    <div class="profile-tags" id="proTags"></div>
+                </div>
+            </div>
+
+            <!-- About -->
+            <div class="profile-section">
+                <h2>About</h2>
+                <p id="proAbout">Experienced professional with years of hands-on work across Casablanca. Clean, punctual, and reliable — your satisfaction is guaranteed. I bring all my own equipment and use eco-friendly products upon request.</p>
+            </div>
+
+            <!-- Other services -->
+            <div class="other-services-banner">
+                <div class="other-services-left">
+                    <div class="other-services-icon">🛠️</div>
+                    <div>
+                        <div class="other-services-title">This Pro offers more services</div>
+                        <div class="other-services-sub">Fatima is also available for other jobs — browse all her services below.</div>
+                    </div>
+                </div>
+                <div class="other-services-tags" id="proServices"></div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="profile-section">
+                <div class="reviews-header">
+                    <h2>Reviews <span class="review-count" id="reviewCount">(124)</span></h2>
+                    <div class="reviews-sort">
+                        <select class="filter-select-sm">
+                            <option>Most recent</option>
+                            <option>Highest rated</option>
+                            <option>Lowest rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Rating breakdown -->
+                <div class="rating-breakdown">
+                    <div class="rating-big">
+                        <div class="rating-big-num" id="ratingBig">4.9</div>
+                        <div class="rating-big-stars">★★★★★</div>
+                        <div class="rating-big-label">out of 5</div>
+                    </div>
+                    <div class="rating-bars" id="ratingBars"></div>
+                </div>
+
+                <!-- Review list -->
+                <div class="reviews-list" id="reviewsList"></div>
+
+                <button class="btn btn-outline load-more-reviews" id="loadMoreReviews">
+                    Show more reviews
+                </button>
+            </div>
+
+        </div>
+
+        <!-- RIGHT: Quote Request Panel (sticky) -->
+        <aside class="book-panel" id="book-panel">
+            <div class="book-panel-inner">
+
+                <!-- Panel header -->
+                <div class="panel-header">
+                    <div class="panel-header-top">
+                        <div class="panel-free-badge">💬 Free to request</div>
+                        <div class="panel-header-actions">
+                            <button class="action-btn-sm" onclick="sharePro()" title="Share">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                            </button>
+                            <button class="action-btn-sm" id="saveBtn" onclick="toggleSave(this)" title="Save">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="panel-title">Request a quote from <span id="panelProName">Fatima</span></h3>
+                    <p class="panel-subtitle">Describe your issue — she'll send you a price within the hour.</p>
+                </div>
+
+                <!-- Quote form -->
+                <form class="book-form" id="quoteForm" novalidate>
+
+                    <div class="book-field">
+                        <label>What service do you need?</label>
+                        <select id="bookService">
+                            <option value="cleaning">🧹 Cleaning</option>
+                            <option value="plumbing">🔧 Plumbing</option>
+                            <option value="electricity">⚡ Electrical</option>
+                            <option value="furniture">🪑 Furniture Assembly</option>
+                            <option value="painting">🖌️ Painting</option>
+                        </select>
+                    </div>
+
+                    <div class="book-field">
+                        <label>Describe your issue <span class="label-required">*</span></label>
+                        <textarea id="jobDescription" rows="4" placeholder="e.g. My bathroom sink has a leak under the pipe. Water is dripping onto the floor. Need it fixed as soon as possible." maxlength="500"></textarea>
+                        <span class="field-char-count"><span id="descCount">0</span>/500</span>
+                        <span class="field-error" id="descError"></span>
+                    </div>
+
+                    <div class="book-field">
+                        <label>Your budget <span class="label-optional">(optional)</span></label>
+                        <div class="budget-input">
+                            <input type="number" id="jobBudget" placeholder="e.g. 200" min="0">
+                            <span class="budget-suffix">MAD</span>
+                        </div>
+                        <span class="field-hint">Not sure? Leave it empty — the Pro will suggest a fair price.</span>
+                    </div>
+
+                    <div class="book-field">
+                        <label>When do you need it?</label>
+                        <div class="date-options">
+                            <button type="button" class="date-opt active" onclick="selectDateOpt(this, 'today')">Today</button>
+                            <button type="button" class="date-opt" onclick="selectDateOpt(this, 'tomorrow')">Tomorrow</button>
+                            <button type="button" class="date-opt" onclick="selectDateOpt(this, 'weekend')">This weekend</button>
+                            <button type="button" class="date-opt" onclick="selectDateOpt(this, 'flexible')">Flexible</button>
+                        </div>
+                    </div>
+
+                    <div class="book-field">
+                        <label>Your location in <span id="proCity2">Casablanca</span></label>
+                        <input type="text" id="jobAddress" placeholder="e.g. Maarif, near Carrefour">
+                        <span class="field-error" id="addressError"></span>
+                    </div>
+
+                    <!-- Success message (hidden) -->
+                    <div class="quote-success" id="quoteSuccess" style="display:none">
+                        <div class="quote-success-icon">✅</div>
+                        <strong>Request sent!</strong>
+                        <p>Fatima will review your request and send you a quote soon. You'll be notified via WhatsApp.</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full book-cta" id="sendQuoteBtn">
+                        Send Request
+                    </button>
+
+                    <div class="book-reassurance">
+                        <div class="reassurance-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            No commitment — compare quotes freely
+                        </div>
+                        <div class="reassurance-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Pay only after the job is done
+                        </div>
+                        <div class="reassurance-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            Updates via WhatsApp
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Mobile sticky quote button -->
+    <div class="mobile-book-bar">
+        <div class="mobile-book-price">
+            <div style="font-size:0.75rem;font-weight:600;color:var(--gray-500);">💬 Free to request</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--dark);">Get quotes via WhatsApp</div>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('quoteForm').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+    </div>
+
+    <script src="auth-state.js"></script>
+    <script src="script.js"></script>
+    <script src="pros-data.js"></script>
+    <script src="pro-profile.js"></script>
+</body>
+</html>

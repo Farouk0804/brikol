@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" fill="none">
+
+  <!-- Icon background -->
+  <rect width="64" height="64" rx="16" fill="#2563EB"/>
+
+  <!-- House body -->
+  <rect x="18" y="32" width="28" height="21" rx="2" fill="white"/>
+
+  <!-- Roof -->
+  <polygon points="14,33 32,14 50,33" fill="white"/>
+
+  <!-- Door (blue cutout) -->
+  <rect x="26" y="39" width="12" height="14" rx="2" fill="#2563EB"/>
+
+  <!-- Hammer badge (orange circle, bottom-right) -->
+  <circle cx="47" cy="47" r="9" fill="#F59E0B"/>
+  <!-- Hammer: handle + head, rotated -->
+  <g transform="rotate(-40, 47, 47)">
+    <!-- Handle -->
+    <rect x="45.5" y="43.5" width="3" height="8.5" rx="1.2" fill="white"/>
+    <!-- Head -->
+    <rect x="42" y="39.5" width="10" height="4.5" rx="1.5" fill="white"/>
+    <!-- Claw (small notch on head) -->
+    <rect x="42" y="39.5" width="2.5" height="2" rx="0.5" fill="#F59E0B"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="80" y="44"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+    font-weight="800"
+    font-size="30"
+    letter-spacing="-0.5"
+    fill="#0F172A">Brikol</text>
+
+</svg>

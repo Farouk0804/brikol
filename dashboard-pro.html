@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Dashboard — Brikol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-pro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="dash-sidebar" id="dashSidebar">
+
+        <div class="dash-sidebar-top">
+            <a href="index.html" class="dash-logo">
+                <img src="logo.svg" id="sidebarLogo" height="32" alt="Brikol">
+            </a>
+
+            <!-- Pro profile block -->
+            <div class="dash-user">
+                <div class="dash-avatar pro-avatar">F</div>
+                <div class="dash-user-info">
+                    <div class="dash-user-name">Fatima B.</div>
+                    <div class="dash-user-role pro-role">⭐ Elite Pro · 4.9</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="dash-nav">
+                <a href="#" class="dash-nav-item active" onclick="showTab('jobs', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                    Available Jobs
+                    <span class="dash-nav-badge new" id="badgeJobs">8</span>
+                </a>
+                <a href="#" class="dash-nav-item" onclick="showTab('quotes', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    My Quotes
+                    <span class="dash-nav-badge" id="badgeQuotes">3</span>
+                </a>
+                <a href="#" class="dash-nav-item" onclick="showTab('active', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Active Jobs
+                    <span class="dash-nav-badge new" id="badgeActive">2</span>
+                </a>
+                <a href="#" class="dash-nav-item" onclick="showTab('earnings', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    Earnings
+                </a>
+                <a href="#" class="dash-nav-item" onclick="showTab('profile', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    My Profile
+                </a>
+            </nav>
+        </div>
+
+        <div class="dash-sidebar-bottom">
+            <!-- Online toggle -->
+            <div class="online-toggle">
+                <div class="online-toggle-info">
+                    <div class="online-dot active" id="onlineDot"></div>
+                    <span id="onlineLabel">Available for jobs</span>
+                </div>
+                <button class="toggle-switch active" id="onlineToggle" onclick="toggleOnline()"></button>
+            </div>
+            <div class="dash-sidebar-links">
+                <a href="index.html">Back to Home</a>
+                <span>·</span>
+                <a href="#" onclick="localStorage.removeItem('brikol-user'); window.location.href='index.html'; return false;">Log out</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- ===== MAIN ===== -->
+    <main class="dash-main">
+
+        <!-- Top bar -->
+        <header class="dash-topbar">
+            <button class="dash-menu-btn" id="menuBtn" onclick="toggleSidebar()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <div class="dash-topbar-title" id="topbarTitle">Available Jobs</div>
+            <div class="dash-topbar-actions">
+                <!-- Notification Bell -->
+                <div class="notif-wrap" id="notifWrap">
+                    <button class="notif-btn" onclick="toggleNotifications()" aria-label="Notifications">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+                        <span class="notif-badge" id="notifBadge">3</span>
+                    </button>
+                    <div class="notif-dropdown hidden" id="notifDropdown">
+                        <div class="notif-header">
+                            <span class="notif-title">Notifications</span>
+                            <button class="notif-mark-all" onclick="markAllRead()">Mark all read</button>
+                        </div>
+                        <div class="notif-list">
+                            <div class="notif-item unread" onclick="markRead(this)">
+                                <div class="notif-icon green">✅</div>
+                                <div class="notif-body">
+                                    <div class="notif-text"><strong>Quote accepted!</strong> Youssef M. accepted your quote of 280 MAD</div>
+                                    <div class="notif-time">30 min ago</div>
+                                </div>
+                                <div class="notif-dot"></div>
+                            </div>
+                            <div class="notif-item unread" onclick="markRead(this)">
+                                <div class="notif-icon blue">💼</div>
+                                <div class="notif-body">
+                                    <div class="notif-text"><strong>New job nearby</strong> — Deep clean 3-bedroom in Casablanca</div>
+                                    <div class="notif-time">1 hr ago</div>
+                                </div>
+                                <div class="notif-dot"></div>
+                            </div>
+                            <div class="notif-item unread" onclick="markRead(this)">
+                                <div class="notif-icon yellow">⭐</div>
+                                <div class="notif-body">
+                                    <div class="notif-text"><strong>5-star review</strong> from Amina R. — "Absolutely fantastic work!"</div>
+                                    <div class="notif-time">3 hrs ago</div>
+                                </div>
+                                <div class="notif-dot"></div>
+                            </div>
+                            <div class="notif-item" onclick="markRead(this)">
+                                <div class="notif-icon gray">📅</div>
+                                <div class="notif-body">
+                                    <div class="notif-text">Reminder: Job tomorrow at 10am — Amina R., Casablanca</div>
+                                    <div class="notif-time">Yesterday</div>
+                                </div>
+                            </div>
+                            <div class="notif-item" onclick="markRead(this)">
+                                <div class="notif-icon gray">🔔</div>
+                                <div class="notif-body">
+                                    <div class="notif-text">Your ID has been <strong>verified</strong> — your Verified badge is now live</div>
+                                    <div class="notif-time">2 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" onclick="toggleTheme()">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== TAB: AVAILABLE JOBS ===== -->
+        <div class="dash-tab" id="tab-jobs">
+            <div class="tab-header">
+                <h2>Available Jobs <span class="tab-count">8 near you</span></h2>
+                <div class="job-filters">
+                    <select class="filter-select-sm" id="filterService" onchange="applyJobFilters()">
+                        <option value="">All services</option>
+                        <option value="cleaning">🧹 Cleaning</option>
+                        <option value="plumbing">🔧 Plumbing</option>
+                        <option value="electricity">⚡ Electrical</option>
+                        <option value="furniture">🪑 Furniture</option>
+                        <option value="painting">🖌️ Painting</option>
+                    </select>
+                    <select class="filter-select-sm" id="filterCity" onchange="applyJobFilters()">
+                        <option value="">All cities</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="marrakech">Marrakech</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="available-jobs-list">
+
+                <!-- Job Card 1 -->
+                <div class="avail-job-card urgent" data-service="cleaning" data-city="casablanca">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">🧹 Cleaning</div>
+                        <span class="avail-job-badge urgent-badge">🚨 Urgent</span>
+                    </div>
+                    <h3 class="avail-job-title">Deep clean needed before tenant moves in</h3>
+                    <p class="avail-job-desc">3-bedroom apartment, full deep clean including bathrooms, kitchen, windows. Must be done by end of day.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 Today</span>
+                        <span>💰 Budget: 400–600 MAD</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 12 min ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'Deep clean needed before tenant moves in')">Send Quote</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="avail-job-card" data-service="cleaning" data-city="casablanca">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">🧹 Cleaning</div>
+                        <span class="avail-job-badge">3 quotes</span>
+                    </div>
+                    <h3 class="avail-job-title">Weekly cleaning for office space</h3>
+                    <p class="avail-job-desc">Small office, about 80m². Looking for a reliable cleaner every Monday morning. Long-term arrangement preferred.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 This week</span>
+                        <span>💰 Open to quotes</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 1 hr ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'Weekly cleaning for office space')">Send Quote</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="avail-job-card" data-service="plumbing" data-city="rabat">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">🔧 Plumbing</div>
+                        <span class="avail-job-badge urgent-badge">🚨 Urgent</span>
+                    </div>
+                    <h3 class="avail-job-title">Water leak under kitchen sink</h3>
+                    <p class="avail-job-desc">Pipe is leaking under the sink, water dripping onto the floor. Need it fixed ASAP, available all day.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Rabat</span>
+                        <span>📅 Today</span>
+                        <span>💰 Budget: 200–350 MAD</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 25 min ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'Water leak under kitchen sink')">Send Quote</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="avail-job-card" data-service="painting" data-city="casablanca">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">🖌️ Painting</div>
+                        <span class="avail-job-badge">1 quote</span>
+                    </div>
+                    <h3 class="avail-job-title">Paint living room and hallway</h3>
+                    <p class="avail-job-desc">Two-room repaint, currently white, want a warm beige. Walls only, no ceiling. I'll provide the paint.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 This weekend</span>
+                        <span>💰 Budget: 500–800 MAD</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 3 hrs ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'Paint living room and hallway')">Send Quote</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="avail-job-card" data-service="furniture" data-city="casablanca">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">🪑 Furniture</div>
+                        <span class="avail-job-badge">0 quotes</span>
+                    </div>
+                    <h3 class="avail-job-title">IKEA wardrobe assembly (PAX system)</h3>
+                    <p class="avail-job-desc">Large PAX wardrobe with 4 doors and interior fittings. Estimated 3–4 hours of work.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 Tomorrow</span>
+                        <span>💰 Open to quotes</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 5 hrs ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'IKEA wardrobe assembly (PAX system)')">Send Quote</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="avail-job-card" data-service="electricity" data-city="marrakech">
+                    <div class="avail-job-header">
+                        <div class="avail-job-service">⚡ Electrical</div>
+                        <span class="avail-job-badge">2 quotes</span>
+                    </div>
+                    <h3 class="avail-job-title">Install 3 ceiling lights in new apartment</h3>
+                    <p class="avail-job-desc">New apartment, need 3 ceiling light fixtures installed. Wiring is already in place. Quick job.</p>
+                    <div class="avail-job-meta">
+                        <span>📍 Marrakech</span>
+                        <span>📅 Flexible</span>
+                        <span>💰 Budget: 250–400 MAD</span>
+                    </div>
+                    <div class="avail-job-footer">
+                        <span class="avail-job-time">Posted 1 day ago</span>
+                        <button class="btn btn-primary btn-sm" onclick="openQuoteModal(this, 'Install 3 ceiling lights in new apartment')">Send Quote</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== TAB: MY QUOTES ===== -->
+        <div class="dash-tab hidden" id="tab-quotes">
+            <div class="tab-header">
+                <h2>My Quotes <span class="tab-count">3 sent</span></h2>
+            </div>
+
+            <div class="my-quotes-list">
+
+                <div class="my-quote-card pending">
+                    <div class="mq-left">
+                        <div class="mq-service">🧹 Cleaning</div>
+                        <h3 class="mq-title">Post-renovation cleanup — 2 rooms</h3>
+                        <div class="mq-meta">📍 Casablanca · Posted 2 days ago</div>
+                    </div>
+                    <div class="mq-right">
+                        <div class="mq-price">320 MAD</div>
+                        <div class="mq-status pending">⏳ Waiting</div>
+                        <div class="mq-sent">Sent 1 day ago</div>
+                    </div>
+                </div>
+
+                <div class="my-quote-card accepted">
+                    <div class="mq-left">
+                        <div class="mq-service">🧹 Cleaning</div>
+                        <h3 class="mq-title">Weekly office cleaning — Monday mornings</h3>
+                        <div class="mq-meta">📍 Casablanca · Posted 3 days ago</div>
+                    </div>
+                    <div class="mq-right">
+                        <div class="mq-price">280 MAD</div>
+                        <div class="mq-status accepted">✅ Accepted</div>
+                        <div class="mq-sent">Sent 2 days ago</div>
+                    </div>
+                </div>
+
+                <div class="my-quote-card declined">
+                    <div class="mq-left">
+                        <div class="mq-service">🧹 Cleaning</div>
+                        <h3 class="mq-title">Deep clean 3-bedroom apartment</h3>
+                        <div class="mq-meta">📍 Rabat · Posted 5 days ago</div>
+                    </div>
+                    <div class="mq-right">
+                        <div class="mq-price">500 MAD</div>
+                        <div class="mq-status declined">❌ Declined</div>
+                        <div class="mq-sent">Sent 4 days ago</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== TAB: ACTIVE JOBS ===== -->
+        <div class="dash-tab hidden" id="tab-active">
+            <div class="tab-header">
+                <h2>Active Jobs <span class="tab-count">2 in progress</span></h2>
+            </div>
+
+            <div class="active-jobs-list">
+
+                <div class="active-job-card">
+                    <div class="active-job-top">
+                        <div>
+                            <div class="active-job-service">🧹 Cleaning</div>
+                            <h3 class="active-job-title">Weekly office cleaning — Monday mornings</h3>
+                        </div>
+                        <span class="active-badge">🔄 In progress</span>
+                    </div>
+                    <p class="active-job-desc">Small office, about 80m². Every Monday morning starting this week.</p>
+                    <div class="active-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 Next: Monday 19 May</span>
+                        <span>💰 280 MAD agreed</span>
+                    </div>
+                    <div class="active-job-customer">
+                        <div class="customer-avatar">Y</div>
+                        <div class="customer-info">
+                            <div class="customer-name">Youssef M.</div>
+                            <div class="customer-location">Casablanca</div>
+                        </div>
+                        <a href="https://wa.me/212600000000" class="btn btn-whatsapp" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.505A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.028-1.381l-.36-.214-3.732.887.934-3.618-.235-.372A9.818 9.818 0 112 12c0-5.427 4.373-9.818 9.818-9.818 5.427 0 9.818 4.391 9.818 9.818 0 5.427-4.391 9.818-9.818 9.818z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="active-job-card">
+                    <div class="active-job-top">
+                        <div>
+                            <div class="active-job-service">🧹 Cleaning</div>
+                            <h3 class="active-job-title">Home cleaning — 2 bedroom apartment</h3>
+                        </div>
+                        <span class="active-badge">🔄 In progress</span>
+                    </div>
+                    <p class="active-job-desc">Regular home cleaning, 2 bedrooms + living room + bathroom. Customer prefers eco-friendly products.</p>
+                    <div class="active-job-meta">
+                        <span>📍 Casablanca</span>
+                        <span>📅 Today, 15:00</span>
+                        <span>💰 350 MAD agreed</span>
+                    </div>
+                    <div class="active-job-customer">
+                        <div class="customer-avatar" style="background:#FCE7F3;color:#9D174D;">A</div>
+                        <div class="customer-info">
+                            <div class="customer-name">Amina R.</div>
+                            <div class="customer-location">Casablanca</div>
+                        </div>
+                        <a href="https://wa.me/212600000001" class="btn btn-whatsapp" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L0 24l6.335-1.505A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.028-1.381l-.36-.214-3.732.887.934-3.618-.235-.372A9.818 9.818 0 112 12c0-5.427 4.373-9.818 9.818-9.818 5.427 0 9.818 4.391 9.818 9.818 0 5.427-4.391 9.818-9.818 9.818z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== TAB: EARNINGS ===== -->
+        <div class="dash-tab hidden" id="tab-earnings">
+            <div class="tab-header">
+                <h2>Earnings</h2>
+            </div>
+
+            <!-- Stats row -->
+            <div class="earnings-stats">
+                <div class="earn-stat-card">
+                    <div class="earn-stat-label">This month</div>
+                    <div class="earn-stat-value">4,850 MAD</div>
+                    <div class="earn-stat-sub">+12% vs last month</div>
+                </div>
+                <div class="earn-stat-card">
+                    <div class="earn-stat-label">Total earned</div>
+                    <div class="earn-stat-value">38,200 MAD</div>
+                    <div class="earn-stat-sub">Since joining Brikol</div>
+                </div>
+                <div class="earn-stat-card">
+                    <div class="earn-stat-label">Jobs completed</div>
+                    <div class="earn-stat-value">187</div>
+                    <div class="earn-stat-sub">⭐ Elite Pro status</div>
+                </div>
+                <div class="earn-stat-card">
+                    <div class="earn-stat-label">Avg. per job</div>
+                    <div class="earn-stat-value">204 MAD</div>
+                    <div class="earn-stat-sub">Based on last 30 days</div>
+                </div>
+            </div>
+
+            <!-- Monthly goal -->
+            <div class="earn-goal-card">
+                <div class="earn-goal-top">
+                    <span class="earn-goal-label">Monthly goal</span>
+                    <span class="earn-goal-value">4,850 / 6,000 MAD</span>
+                </div>
+                <div class="earn-goal-bar">
+                    <div class="earn-goal-fill" style="width: 81%"></div>
+                </div>
+                <div class="earn-goal-sub">81% reached · 1,150 MAD to go</div>
+            </div>
+
+            <!-- Transaction history -->
+            <div class="earn-history">
+                <h3>Recent payments</h3>
+                <div class="earn-tx-list">
+                    <div class="earn-tx">
+                        <div class="earn-tx-icon">🧹</div>
+                        <div class="earn-tx-info">
+                            <div class="earn-tx-title">Home cleaning — Amina R.</div>
+                            <div class="earn-tx-date">Today</div>
+                        </div>
+                        <div class="earn-tx-amount">+350 MAD</div>
+                    </div>
+                    <div class="earn-tx">
+                        <div class="earn-tx-icon">🧹</div>
+                        <div class="earn-tx-info">
+                            <div class="earn-tx-title">Office cleaning — Youssef M.</div>
+                            <div class="earn-tx-date">Yesterday</div>
+                        </div>
+                        <div class="earn-tx-amount">+280 MAD</div>
+                    </div>
+                    <div class="earn-tx">
+                        <div class="earn-tx-icon">🧹</div>
+                        <div class="earn-tx-info">
+                            <div class="earn-tx-title">Deep clean — Nadia S.</div>
+                            <div class="earn-tx-date">3 days ago</div>
+                        </div>
+                        <div class="earn-tx-amount">+480 MAD</div>
+                    </div>
+                    <div class="earn-tx">
+                        <div class="earn-tx-icon">🧹</div>
+                        <div class="earn-tx-info">
+                            <div class="earn-tx-title">Post-renovation cleanup — Omar T.</div>
+                            <div class="earn-tx-date">5 days ago</div>
+                        </div>
+                        <div class="earn-tx-amount">+400 MAD</div>
+                    </div>
+                    <div class="earn-tx">
+                        <div class="earn-tx-icon">🧹</div>
+                        <div class="earn-tx-info">
+                            <div class="earn-tx-title">Home cleaning — Rachid A.</div>
+                            <div class="earn-tx-date">1 week ago</div>
+                        </div>
+                        <div class="earn-tx-amount">+320 MAD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TAB: MY PROFILE ===== -->
+        <div class="dash-tab hidden" id="tab-profile">
+            <div class="tab-header">
+                <h2>My Profile</h2>
+            </div>
+
+            <div class="profile-edit-grid">
+
+                <!-- Profile card preview -->
+                <div class="profile-preview-card">
+                    <div class="pp-avatar">F</div>
+                    <div class="pp-name">Fatima B.</div>
+                    <div class="pp-specialty">Home Cleaner · 5 yrs exp</div>
+                    <div class="pp-rating">★★★★★ 4.9 <span>(124 reviews)</span></div>
+                    <div class="pp-badges">
+                        <span class="pp-badge elite">⭐ Elite Pro</span>
+                        <span class="pp-badge verified">✅ Verified</span>
+                    </div>
+                    <a href="pro-profile.html" class="btn btn-outline btn-sm" style="margin-top:16px">View public profile →</a>
+                </div>
+
+                <!-- Edit form -->
+                <div class="profile-edit-form">
+                    <div class="edit-section">
+                        <h3>Personal info</h3>
+                        <div class="edit-field">
+                            <label>Full name</label>
+                            <input type="text" value="Fatima Benali" class="edit-input">
+                        </div>
+                        <div class="edit-field">
+                            <label>Phone (WhatsApp)</label>
+                            <input type="text" value="+212 6 00 00 00 00" class="edit-input">
+                        </div>
+                        <div class="edit-field">
+                            <label>City</label>
+                            <select class="edit-input">
+                                <option selected>Casablanca</option>
+                                <option>Rabat</option>
+                                <option>Marrakech</option>
+                                <option>Fès</option>
+                                <option>Tanger</option>
+                                <option>Agadir</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="edit-section">
+                        <h3>About me</h3>
+                        <div class="edit-field">
+                            <textarea class="edit-input edit-textarea" rows="4">Experienced professional with years of hands-on work across Casablanca. Clean, punctual, and reliable — your satisfaction is guaranteed. I bring all my own equipment and use eco-friendly products upon request. Weekend bookings are available.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="edit-section">
+                        <h3>Services offered</h3>
+                        <div class="services-checkboxes">
+                            <label class="service-check" data-service="cleaning"><input type="checkbox" checked> 🧹 Cleaning</label>
+                            <label class="service-check" data-service="plumbing"><input type="checkbox"> 🔧 Plumbing</label>
+                            <label class="service-check" data-service="electricity"><input type="checkbox"> ⚡ Electrical</label>
+                            <label class="service-check" data-service="furniture"><input type="checkbox"> 🪑 Furniture Assembly</label>
+                            <label class="service-check" data-service="painting"><input type="checkbox"> 🖌️ Painting</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== QUOTE MODAL ===== -->
+    <div class="modal-overlay hidden" id="quoteModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Send a Quote</h3>
+                <button class="modal-close" onclick="closeQuoteModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-job-title" id="modalJobTitle">Job title here</div>
+                <div class="edit-field" style="margin-top:16px">
+                    <label>Your price (MAD)</label>
+                    <div style="display:flex;gap:8px;align-items:center">
+                        <input type="number" class="edit-input" id="quotePrice" placeholder="e.g. 350" style="flex:1">
+                        <span style="font-weight:600;color:var(--gray-500)">MAD</span>
+                    </div>
+                </div>
+                <div class="edit-field">
+                    <label>Message to customer <span style="color:var(--gray-400);font-weight:400">(optional)</span></label>
+                    <textarea class="edit-input edit-textarea" id="quoteMessage" rows="3" placeholder="e.g. I can be there by 2pm, I have all equipment needed..."></textarea>
+                </div>
+                <div class="edit-field">
+                    <label>Estimated duration</label>
+                    <select class="edit-input" id="quoteDuration">
+                        <option>Less than 1 hour</option>
+                        <option>1–2 hours</option>
+                        <option selected>2–3 hours</option>
+                        <option>Half day</option>
+                        <option>Full day</option>
+                        <option>Multiple days</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeQuoteModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitQuote()">Send Quote</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard-pro.js"></script>
+</body>
+</html>

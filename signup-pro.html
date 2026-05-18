@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Pro — Brikol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+
+    <!-- Navbar minimal -->
+    <nav class="auth-nav">
+        <a href="index.html" class="logo">
+            
+            <img src="logo.svg" height="36" alt="Brikol">
+        </a>
+        <div class="auth-nav-right">
+            Already have an account? <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button><a href="login.html" class="auth-link">Log in</a>
+        </div>
+    </nav>
+
+    <div class="auth-wrapper">
+
+        <!-- Left panel -->
+        <div class="auth-left auth-left-pro">
+            <div class="auth-left-content">
+                <h2>Earn more doing<br>what you're good at.</h2>
+                <div class="auth-perks">
+                    <div class="perk">
+                        <div class="perk-icon">💰</div>
+                        <div>
+                            <strong>Set your own prices</strong>
+                            <p>You decide how much your work is worth</p>
+                        </div>
+                    </div>
+                    <div class="perk">
+                        <div class="perk-icon">🗓️</div>
+                        <div>
+                            <strong>Work on your schedule</strong>
+                            <p>Accept or decline jobs anytime</p>
+                        </div>
+                    </div>
+                    <div class="perk">
+                        <div class="perk-icon">📈</div>
+                        <div>
+                            <strong>Grow your reputation</strong>
+                            <p>Build a profile with real customer reviews</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="earnings-preview">
+                    <div class="earnings-preview-label">Average monthly earnings</div>
+                    <div class="earnings-preview-amount">5,200 MAD</div>
+                    <div class="earnings-preview-sub">Based on top Pros in Casablanca</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right panel: form -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+
+                <div class="auth-role-toggle">
+                    <a href="signup-customer.html" class="role-btn">I need a service</a>
+                    <a href="signup-pro.html" class="role-btn active">I'm a Pro</a>
+                </div>
+
+                <h1 class="auth-title">Apply as a Pro</h1>
+                <p class="auth-subtitle">We'll review your application within 24 hours</p>
+
+                <!-- Progress steps -->
+                <div class="form-steps">
+                    <div class="form-step active" data-step="1">
+                        <div class="step-dot">1</div>
+                        <span>Personal info</span>
+                    </div>
+                    <div class="steps-line"></div>
+                    <div class="form-step" data-step="2">
+                        <div class="step-dot">2</div>
+                        <span>Your services</span>
+                    </div>
+                    <div class="steps-line"></div>
+                    <div class="form-step" data-step="3">
+                        <div class="step-dot">3</div>
+                        <span>Verification</span>
+                    </div>
+                </div>
+
+                <form class="auth-form" id="proSignupForm" novalidate>
+
+                    <!-- Step 1: Personal info -->
+                    <div class="form-step-content active" id="step1">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="proFirstName">First name</label>
+                                <input type="text" id="proFirstName" placeholder="Ahmed" autocomplete="given-name" required>
+                                <span class="field-error" id="proFirstNameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="proLastName">Last name</label>
+                                <input type="text" id="proLastName" placeholder="Benjelloun" autocomplete="family-name" required>
+                                <span class="field-error" id="proLastNameError"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="proEmail">Email address</label>
+                            <input type="email" id="proEmail" placeholder="you@example.com" autocomplete="email" required>
+                            <span class="field-error" id="proEmailError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="proPhone">Phone number</label>
+                            <div class="phone-input">
+                                <span class="phone-prefix">🇲🇦 +212</span>
+                                <input type="tel" id="proPhone" placeholder="06 12 34 56 78" autocomplete="tel" required>
+                            </div>
+                            <span class="field-error" id="proPhoneError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="proCity">City you work in</label>
+                            <select id="proCity" required>
+                                <option value="">Select your city</option>
+                                <option value="casablanca">Casablanca</option>
+                                <option value="rabat">Rabat</option>
+                                <option value="marrakech">Marrakech</option>
+                                <option value="fes">Fès</option>
+                                <option value="tanger">Tanger</option>
+                                <option value="agadir">Agadir</option>
+                                <option value="meknes">Meknès</option>
+                                <option value="oujda">Oujda</option>
+                            </select>
+                            <span class="field-error" id="proCityError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="proPassword">Password</label>
+                            <div class="password-input">
+                                <input type="password" id="proPassword" placeholder="At least 8 characters" autocomplete="new-password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('proPassword', this)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="proPasswordStrength">
+                                <div class="strength-bar"><div class="strength-fill" id="proStrengthFill"></div></div>
+                                <span class="strength-label" id="proStrengthLabel"></span>
+                            </div>
+                            <span class="field-error" id="proPasswordError"></span>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-full" onclick="nextStep(2)">
+                            Continue →
+                        </button>
+
+                    </div>
+
+                    <!-- Step 2: Services -->
+                    <div class="form-step-content" id="step2">
+
+                        <div class="form-group">
+                            <label>What services do you offer? <span class="label-note">(select all that apply)</span></label>
+                            <div class="service-checkboxes">
+                                <label class="service-check-item">
+                                    <input type="checkbox" name="services" value="cleaning">
+                                    <div class="service-check-card">
+                                        <span class="service-check-emoji">🧹</span>
+                                        <span>Cleaning</span>
+                                    </div>
+                                </label>
+                                <label class="service-check-item">
+                                    <input type="checkbox" name="services" value="plumbing">
+                                    <div class="service-check-card">
+                                        <span class="service-check-emoji">🔧</span>
+                                        <span>Plumbing</span>
+                                    </div>
+                                </label>
+                                <label class="service-check-item">
+                                    <input type="checkbox" name="services" value="electricity">
+                                    <div class="service-check-card">
+                                        <span class="service-check-emoji">⚡</span>
+                                        <span>Electrical</span>
+                                    </div>
+                                </label>
+                                <label class="service-check-item">
+                                    <input type="checkbox" name="services" value="furniture">
+                                    <div class="service-check-card">
+                                        <span class="service-check-emoji">🪑</span>
+                                        <span>Furniture</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="field-error" id="servicesError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experience">Years of experience</label>
+                            <select id="experience" required>
+                                <option value="">Select experience</option>
+                                <option value="1">Less than 1 year</option>
+                                <option value="2">1 – 3 years</option>
+                                <option value="5">3 – 5 years</option>
+                                <option value="10">5 – 10 years</option>
+                                <option value="10+">10+ years</option>
+                            </select>
+                            <span class="field-error" id="experienceError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hourlyRate">Your hourly rate (MAD)</label>
+                            <div class="rate-input">
+                                <input type="number" id="hourlyRate" placeholder="e.g. 80" min="30" max="500" required>
+                                <span class="rate-suffix">MAD/hr</span>
+                            </div>
+                            <span class="field-hint">Tip: most Pros in Morocco charge 60–150 MAD/hr</span>
+                            <span class="field-error" id="hourlyRateError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Tell customers about yourself</label>
+                            <textarea id="bio" rows="3" placeholder="e.g. Certified electrician with 7 years of experience in Casablanca. Fast, clean, and reliable." maxlength="300"></textarea>
+                            <span class="field-hint char-count"><span id="bioCount">0</span>/300</span>
+                        </div>
+
+                        <div class="step-buttons">
+                            <button type="button" class="btn btn-ghost" onclick="prevStep(1)">← Back</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continue →</button>
+                        </div>
+
+                    </div>
+
+                    <!-- Step 3: Verification -->
+                    <div class="form-step-content" id="step3">
+
+                        <div class="verify-info-box">
+                            <span>🔒</span>
+                            <p>We verify all Pros to keep our platform safe and trustworthy. Your documents are encrypted and never shared publicly.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label>National ID (CIN)</label>
+                            <div class="upload-box" id="cinUpload" onclick="document.getElementById('cinFile').click()">
+                                <input type="file" id="cinFile" accept="image/*,.pdf" style="display:none" onchange="handleFileUpload(this, 'cinUpload', 'cinLabel')">
+                                <div class="upload-icon">📄</div>
+                                <div class="upload-text">
+                                    <strong id="cinLabel">Click to upload CIN</strong>
+                                    <span>JPG, PNG or PDF — max 5MB</span>
+                                </div>
+                            </div>
+                            <span class="field-error" id="cinError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Professional certificate <span class="label-note">(optional)</span></label>
+                            <div class="upload-box" id="certUpload" onclick="document.getElementById('certFile').click()">
+                                <input type="file" id="certFile" accept="image/*,.pdf" style="display:none" onchange="handleFileUpload(this, 'certUpload', 'certLabel')">
+                                <div class="upload-icon">🏆</div>
+                                <div class="upload-text">
+                                    <strong id="certLabel">Click to upload certificate</strong>
+                                    <span>JPG, PNG or PDF — max 5MB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" id="proTerms" required>
+                            <label for="proTerms">I agree to the <a href="#" class="auth-link">Terms of Service</a>, <a href="#" class="auth-link">Privacy Policy</a>, and <a href="#" class="auth-link">Pro Guidelines</a></label>
+                        </div>
+                        <span class="field-error" id="proTermsError"></span>
+
+                        <div class="step-buttons">
+                            <button type="button" class="btn btn-ghost" onclick="prevStep(2)">← Back</button>
+                            <button type="submit" class="btn btn-primary" id="proSubmitBtn">Submit application</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+                <p class="auth-footer-note">
+                    Looking for a service? <a href="signup-customer.html" class="auth-link">Sign up as a customer →</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

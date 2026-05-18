@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job — Brikol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="post-job.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" height="36" alt="Brikol">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#how-it-works">How it works</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="signup-pro.html" class="nav-tasker">Become a Pro</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                </button>
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html#how-it-works">How it works</a>
+            <a href="index.html#services">Services</a>
+            <a href="signup-pro.html">Become a Pro</a>
+            <div class="mobile-actions">
+                <a href="login.html" class="btn btn-ghost">Log in</a>
+                <a href="signup-customer.html" class="btn btn-primary">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page wrapper -->
+    <div class="pj-wrapper">
+
+        <!-- LEFT: Form area -->
+        <div class="pj-main">
+
+            <!-- Header -->
+            <div class="pj-header" id="pjHeader">
+                <div class="pj-header-label">Post a Job</div>
+                <h1 class="pj-header-title" id="stepTitle">What service do you need?</h1>
+                <p class="pj-header-sub" id="stepSub">Choose a category and we'll match you with available Pros in your city.</p>
+            </div>
+
+            <!-- Progress indicator -->
+            <div class="pj-progress" id="pjProgress">
+                <div class="pj-progress-track">
+                    <div class="pj-progress-fill" id="progressFill"></div>
+                </div>
+                <div class="pj-step-dots">
+                    <div class="pj-dot active" data-step="1"><span>1</span></div>
+                    <div class="pj-dot" data-step="2"><span>2</span></div>
+                    <div class="pj-dot" data-step="3"><span>3</span></div>
+                    <div class="pj-dot" data-step="4"><span>4</span></div>
+                </div>
+                <div class="pj-step-labels">
+                    <span>Service</span>
+                    <span>Details</span>
+                    <span>Schedule</span>
+                    <span>Review</span>
+                </div>
+            </div>
+
+            <!-- ===== STEP 1: Service ===== -->
+            <div class="pj-step" id="step1">
+                <div class="service-grid">
+                    <button class="service-choice" data-service="cleaning" onclick="selectService(this)">
+                        <div class="service-choice-icon">🧹</div>
+                        <div class="service-choice-name">Cleaning</div>
+                        <div class="service-choice-desc">Home, office, or deep clean</div>
+                        <div class="service-choice-check">✓</div>
+                    </button>
+                    <button class="service-choice" data-service="plumbing" onclick="selectService(this)">
+                        <div class="service-choice-icon">🔧</div>
+                        <div class="service-choice-name">Plumbing</div>
+                        <div class="service-choice-desc">Leaks, pipes, installations</div>
+                        <div class="service-choice-check">✓</div>
+                    </button>
+                    <button class="service-choice" data-service="electricity" onclick="selectService(this)">
+                        <div class="service-choice-icon">⚡</div>
+                        <div class="service-choice-name">Electrical</div>
+                        <div class="service-choice-desc">Wiring, fixtures, repairs</div>
+                        <div class="service-choice-check">✓</div>
+                    </button>
+                    <button class="service-choice" data-service="furniture" onclick="selectService(this)">
+                        <div class="service-choice-icon">🪑</div>
+                        <div class="service-choice-name">Furniture</div>
+                        <div class="service-choice-desc">Assembly & installation</div>
+                        <div class="service-choice-check">✓</div>
+                    </button>
+                    <button class="service-choice" data-service="painting" onclick="selectService(this)">
+                        <div class="service-choice-icon">🖌️</div>
+                        <div class="service-choice-name">Painting</div>
+                        <div class="service-choice-desc">Walls, rooms, touch-ups</div>
+                        <div class="service-choice-check">✓</div>
+                    </button>
+                </div>
+                <div class="pj-error" id="error1"></div>
+            </div>
+
+            <!-- ===== STEP 2: Details ===== -->
+            <div class="pj-step hidden" id="step2">
+
+                <div class="pj-field">
+                    <label class="pj-label">Describe your issue <span class="req">*</span></label>
+                    <p class="pj-hint">Be as specific as possible — this helps Pros give you an accurate quote.</p>
+                    <textarea id="jobDesc" class="pj-textarea" rows="5"
+                        placeholder="e.g. My bathroom sink has a leak under the pipe. Water is dripping onto the floor when I use the tap. Need it fixed as soon as possible." maxlength="600"></textarea>
+                    <div class="pj-char-count"><span id="descCount">0</span>/600</div>
+                </div>
+
+                <div class="pj-field">
+                    <label class="pj-label">Add photos <span class="opt">(optional)</span></label>
+                    <p class="pj-hint">Photos help Pros understand the job better and give better quotes.</p>
+                    <div class="pj-upload-area" id="uploadArea" onclick="document.getElementById('photoInput').click()">
+                        <input type="file" id="photoInput" accept="image/*" multiple style="display:none" onchange="handlePhotos(this)">
+                        <div class="pj-upload-icon">📷</div>
+                        <div class="pj-upload-text">Click to add photos</div>
+                        <div class="pj-upload-sub">JPG, PNG — max 5 photos</div>
+                    </div>
+                    <div class="pj-photo-previews" id="photoPreviews"></div>
+                </div>
+
+                <div class="pj-field">
+                    <label class="pj-label">Your city <span class="req">*</span></label>
+                    <select class="pj-select" id="jobCity">
+                        <option value="">Select your city</option>
+                        <option value="casablanca">Casablanca</option>
+                        <option value="rabat">Rabat</option>
+                        <option value="marrakech">Marrakech</option>
+                        <option value="fes">Fès</option>
+                        <option value="tanger">Tanger</option>
+                        <option value="agadir">Agadir</option>
+                        <option value="meknes">Meknès</option>
+                        <option value="oujda">Oujda</option>
+                    </select>
+                </div>
+
+                <div class="pj-field">
+                    <label class="pj-label">Neighbourhood / Address <span class="opt">(optional)</span></label>
+                    <input type="text" class="pj-input" id="jobAddress" placeholder="e.g. Maarif, near Carrefour">
+                </div>
+
+                <div class="pj-error" id="error2"></div>
+            </div>
+
+            <!-- ===== STEP 3: Schedule ===== -->
+            <div class="pj-step hidden" id="step3">
+
+                <div class="pj-field">
+                    <label class="pj-label">When do you need it done?</label>
+                    <div class="pj-date-grid">
+                        <button type="button" class="pj-date-opt active" onclick="selectDate(this, 'today')">
+                            <span class="pj-date-icon">☀️</span>
+                            <span class="pj-date-name">Today</span>
+                        </button>
+                        <button type="button" class="pj-date-opt" onclick="selectDate(this, 'tomorrow')">
+                            <span class="pj-date-icon">📅</span>
+                            <span class="pj-date-name">Tomorrow</span>
+                        </button>
+                        <button type="button" class="pj-date-opt" onclick="selectDate(this, 'weekend')">
+                            <span class="pj-date-icon">🌅</span>
+                            <span class="pj-date-name">This weekend</span>
+                        </button>
+                        <button type="button" class="pj-date-opt" onclick="selectDate(this, 'flexible')">
+                            <span class="pj-date-icon">🗓️</span>
+                            <span class="pj-date-name">I'm flexible</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pj-field">
+                    <label class="pj-label">Your budget <span class="opt">(optional)</span></label>
+                    <p class="pj-hint">Not sure? Leave it empty — Pros will suggest a fair price based on your job.</p>
+                    <div class="pj-budget-wrap">
+                        <input type="number" class="pj-input pj-budget-input" id="jobBudget" placeholder="e.g. 300" min="0">
+                        <span class="pj-budget-currency">MAD</span>
+                    </div>
+                </div>
+
+                <div class="pj-field">
+                    <label class="pj-label">Is this urgent?</label>
+                    <div class="pj-urgency-row">
+                        <button type="button" class="pj-urgency-btn" id="urgentNo" onclick="selectUrgency(false)">
+                            <span>🕐</span> No rush
+                        </button>
+                        <button type="button" class="pj-urgency-btn active" id="urgentYes" onclick="selectUrgency(true)">
+                            <span>🚨</span> Urgent — ASAP
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== STEP 4: Review ===== -->
+            <div class="pj-step hidden" id="step4">
+
+                <div class="pj-review-card">
+                    <div class="pj-review-row">
+                        <div class="pj-review-label">Service</div>
+                        <div class="pj-review-value" id="reviewService">—</div>
+                        <button class="pj-review-edit" onclick="goToStep(1)">Edit</button>
+                    </div>
+                    <div class="pj-review-divider"></div>
+                    <div class="pj-review-row">
+                        <div class="pj-review-label">Description</div>
+                        <div class="pj-review-value pj-review-desc" id="reviewDesc">—</div>
+                        <button class="pj-review-edit" onclick="goToStep(2)">Edit</button>
+                    </div>
+                    <div class="pj-review-divider"></div>
+                    <div class="pj-review-row">
+                        <div class="pj-review-label">Location</div>
+                        <div class="pj-review-value" id="reviewLocation">—</div>
+                        <button class="pj-review-edit" onclick="goToStep(2)">Edit</button>
+                    </div>
+                    <div class="pj-review-divider"></div>
+                    <div class="pj-review-row">
+                        <div class="pj-review-label">When</div>
+                        <div class="pj-review-value" id="reviewDate">—</div>
+                        <button class="pj-review-edit" onclick="goToStep(3)">Edit</button>
+                    </div>
+                    <div class="pj-review-divider"></div>
+                    <div class="pj-review-row">
+                        <div class="pj-review-label">Budget</div>
+                        <div class="pj-review-value" id="reviewBudget">—</div>
+                        <button class="pj-review-edit" onclick="goToStep(3)">Edit</button>
+                    </div>
+                </div>
+
+                <div class="pj-review-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Your contact info is never shared publicly. Pros will only reach you after you accept their quote.</span>
+                </div>
+
+            </div>
+
+            <!-- ===== SUCCESS ===== -->
+            <div class="pj-step hidden" id="stepSuccess">
+                <div class="pj-success">
+                    <div class="pj-success-icon">🎉</div>
+                    <h2>Your job is live!</h2>
+                    <p>Pros near you are reviewing your request. You'll receive quotes on WhatsApp within the hour.</p>
+                    <div class="pj-success-steps">
+                        <div class="pj-success-step">
+                            <div class="pj-ss-num">1</div>
+                            <div>
+                                <strong>Pros review your job</strong>
+                                <p>Available Pros in your city see your request</p>
+                            </div>
+                        </div>
+                        <div class="pj-success-step">
+                            <div class="pj-ss-num">2</div>
+                            <div>
+                                <strong>You receive quotes</strong>
+                                <p>Each Pro sends you their price via WhatsApp</p>
+                            </div>
+                        </div>
+                        <div class="pj-success-step">
+                            <div class="pj-ss-num">3</div>
+                            <div>
+                                <strong>You pick the best offer</strong>
+                                <p>Compare, negotiate, and confirm when ready</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pj-success-actions">
+                        <a href="index.html" class="btn btn-outline">Back to home</a>
+                        <a href="dashboard-customer.html" class="btn btn-primary">Go to My Dashboard →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="pj-nav" id="pjNav">
+                <button class="btn btn-ghost pj-back" id="backBtn" onclick="prevStep()" style="visibility:hidden">← Back</button>
+                <button class="btn btn-primary pj-next" id="nextBtn" onclick="nextStep()">Continue →</button>
+            </div>
+
+        </div>
+
+        <!-- RIGHT: Trust sidebar -->
+        <aside class="pj-sidebar">
+            <div class="pj-trust-card">
+                <h3>How Brikol works</h3>
+                <div class="pj-trust-steps">
+                    <div class="pj-trust-step">
+                        <div class="pj-trust-num">1</div>
+                        <div>
+                            <strong>Post your job for free</strong>
+                            <p>Describe what you need — takes less than 2 minutes</p>
+                        </div>
+                    </div>
+                    <div class="pj-trust-step">
+                        <div class="pj-trust-num">2</div>
+                        <div>
+                            <strong>Receive quotes from Pros</strong>
+                            <p>Verified Pros in your city send you their best price</p>
+                        </div>
+                    </div>
+                    <div class="pj-trust-step">
+                        <div class="pj-trust-num">3</div>
+                        <div>
+                            <strong>Pick & confirm</strong>
+                            <p>Choose the quote you like. Pay only after the job is done.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pj-guarantee-card">
+                <div class="pj-guarantee-items">
+                    <div class="pj-guarantee-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Free to post — no hidden fees</span>
+                    </div>
+                    <div class="pj-guarantee-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Verified Pros only</span>
+                    </div>
+                    <div class="pj-guarantee-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        <span>Pay only after the job is done</span>
+                    </div>
+                    <div class="pj-guarantee-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 12.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        <span>Quotes via WhatsApp — fast & easy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pj-stats-card">
+                <div class="pj-stat-item">
+                    <strong>2 min</strong>
+                    <span>Average time to post</span>
+                </div>
+                <div class="pj-stat-divider"></div>
+                <div class="pj-stat-item">
+                    <strong>&lt; 1hr</strong>
+                    <span>First quote received</span>
+                </div>
+                <div class="pj-stat-divider"></div>
+                <div class="pj-stat-item">
+                    <strong>4.8★</strong>
+                    <span>Average Pro rating</span>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="auth-state.js"></script>
+    <script src="script.js"></script>
+    <script src="post-job.js"></script>
+</body>
+</html>
