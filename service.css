@@ -676,3 +676,18 @@
     .pro-listing-card { padding: 0; }
     .pro-card-avatar-area { padding: 24px 16px 16px; }
 }
+
+/* Empty state when no pros match filters */
+.no-pros-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--white);
+    border: 1.5px dashed var(--gray-300);
+    border-radius: 16px;
+}
+.no-pros-emoji { font-size: 3rem; margin-bottom: 16px; }
+.no-pros-state h3 { font-size: 1.2rem; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+.no-pros-state p { font-size: 0.9rem; color: var(--gray-500); max-width: 360px; margin: 0 auto 20px; line-height: 1.6; }
+
+[data-theme="dark"] .no-pros-state { background: #1E293B; border-color: #334155; }

@@ -144,6 +144,21 @@ let isListView = false;
 
 function renderPros() {
     const grid = document.getElementById('prosGrid');
+
+    if (allPros.length === 0) {
+        grid.innerHTML = `
+            <div class="no-pros-state">
+                <div class="no-pros-emoji">🔍</div>
+                <h3>No Pros found</h3>
+                <p>We don't have any pros in this city for this service yet. Try a different city or service — or post a job and let Pros come to you.</p>
+                <a href="post-job.html" class="btn btn-primary">Post a Job</a>
+            </div>
+        `;
+        document.getElementById('listingsCount').textContent = 'No professionals match your filters';
+        document.getElementById('loadMoreBtn').style.display = 'none';
+        return;
+    }
+
     grid.innerHTML = allPros.slice(0, visibleCount).map(p => buildCard(p, isListView)).join('');
     document.getElementById('listingsCount').textContent =
         `Showing ${Math.min(visibleCount, allPros.length)} of ${allPros.length} professionals`;
