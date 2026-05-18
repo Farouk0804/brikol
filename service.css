@@ -654,11 +654,24 @@
 }
 
 /* Very small phones — listings polish */
+@media (max-width: 768px) {
+    .service-hero { padding: 100px 0 0; }
+    .breadcrumb { margin-bottom: 16px; font-size: 0.8rem; }
+    .service-hero-text {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+    .service-hero-emoji { font-size: 2.4rem; }
+}
+
 @media (max-width: 480px) {
     .service-main { padding: 24px 12px; }
-    .service-hero { padding: 90px 0 0; }
+    .service-hero { padding: 110px 0 0; }
     .service-hero-inner { padding: 0 12px 20px; }
-    .service-hero-text h1 { font-size: 1.3rem; }
+    .service-hero-text h1 { font-size: 1.4rem; }
+    .service-hero-text p { font-size: 0.9rem; }
     .listings-header { flex-wrap: wrap; gap: 12px; }
     .pro-listing-card { padding: 0; }
     .pro-card-avatar-area { padding: 24px 16px 16px; }
