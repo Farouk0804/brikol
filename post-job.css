@@ -866,13 +866,39 @@
     /* Budget */
     .pj-budget-wrap { padding: 4px; }
     .pj-budget-input { font-size: 1.2rem; padding: 12px; }
+
+    /* Urgency buttons — full width tap targets */
+    .pj-urgency-btn { padding: 16px 12px; font-size: 0.9rem; }
+
+    /* Review step — stack label over value */
+    .pj-review-row { flex-direction: column; gap: 4px; padding: 14px 16px; }
+    .pj-review-label { min-width: unset; }
+
+    /* Success screen */
+    .pj-success { padding: 40px 16px; }
+    .pj-success-actions { flex-direction: column; gap: 10px; }
+    .pj-success-actions .btn { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 480px) {
     .service-grid { grid-template-columns: 1fr !important; gap: 10px; }
-    .service-choice { min-height: 80px; flex-direction: row; gap: 14px; text-align: left; }
-    .service-choice-icon { font-size: 1.8rem; margin: 0; }
-    .service-choice-text { flex: 1; }
+    .service-choice {
+        min-height: unset;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "icon name"
+            "icon desc";
+        column-gap: 14px;
+        row-gap: 2px;
+        align-items: center;
+        text-align: left;
+        padding: 14px 16px;
+    }
+    .service-choice-icon { grid-area: icon; font-size: 1.8rem; margin: 0; }
+    .service-choice-name { grid-area: name; margin: 0; }
+    .service-choice-desc { grid-area: desc; margin: 0; }
+    .service-choice-check { top: 50%; right: 14px; margin-top: -11px; }
     .pj-header-title { font-size: 1.3rem; }
     .pj-step-labels { display: none; }
     .pj-dot { width: 24px; height: 24px; font-size: 0.7rem; }
