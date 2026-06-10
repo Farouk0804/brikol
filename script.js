@@ -149,6 +149,10 @@ const fadeObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.step-card, .service-card, .testimonial-card, .why-feature, .pro-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    // Stagger: each card in the same row/grid waits a bit longer than its sibling
+    const siblings = Array.from(el.parentElement.children).filter(c => c.classList.contains(el.classList[0]));
+    const index = siblings.indexOf(el);
+    const delay = Math.min(index * 0.08, 0.4);
+    el.style.transition = `opacity 0.5s ease ${delay}s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
     fadeObserver.observe(el);
 });

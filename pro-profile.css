@@ -908,3 +908,17 @@
     .mobile-book-bar { padding: 10px 14px; gap: 8px; }
     .mobile-book-price { display: none; }
 }
+
+/* Page entrance */
+@keyframes profileIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.profile-header-card { animation: profileIn 0.5s ease 0.05s backwards; }
+.profile-section     { animation: profileIn 0.5s ease 0.15s backwards; }
+.other-services-banner { animation: profileIn 0.5s ease 0.25s backwards; }
+.book-panel          { animation: profileIn 0.5s ease 0.2s backwards; }
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-header-card, .profile-section, .other-services-banner, .book-panel { animation: none; }
+}
