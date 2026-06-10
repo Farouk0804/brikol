@@ -42,9 +42,10 @@ function showTab(tabId, navEl) {
     // Show selected
     document.getElementById(`tab-${tabId}`).classList.remove('hidden');
 
-    // Update nav active state
-    document.querySelectorAll('.dash-nav-item').forEach(n => n.classList.remove('active'));
-    if (navEl) navEl.classList.add('active');
+    // Sync active state across sidebar AND bottom bar
+    document.querySelectorAll('.dash-nav-item, .bottombar-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll(`.dash-nav-item[data-tab="${tabId}"], .bottombar-item[data-tab="${tabId}"]`)
+        .forEach(n => n.classList.add('active'));
 
     // Update topbar title
     document.getElementById('topbarTitle').textContent = tabTitles[tabId] || tabId;

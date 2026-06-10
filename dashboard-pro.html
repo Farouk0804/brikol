@@ -31,26 +31,26 @@
 
             <!-- Navigation -->
             <nav class="dash-nav">
-                <a href="#" class="dash-nav-item active" onclick="showTab('jobs', this)">
+                <a href="#" class="dash-nav-item active" data-tab="jobs" onclick="showTab('jobs', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
                     Available Jobs
                     <span class="dash-nav-badge new" id="badgeJobs">8</span>
                 </a>
-                <a href="#" class="dash-nav-item" onclick="showTab('quotes', this)">
+                <a href="#" class="dash-nav-item" data-tab="quotes" onclick="showTab('quotes', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                     My Quotes
                     <span class="dash-nav-badge" id="badgeQuotes">3</span>
                 </a>
-                <a href="#" class="dash-nav-item" onclick="showTab('active', this)">
+                <a href="#" class="dash-nav-item" data-tab="active" onclick="showTab('active', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     Active Jobs
                     <span class="dash-nav-badge new" id="badgeActive">2</span>
                 </a>
-                <a href="#" class="dash-nav-item" onclick="showTab('earnings', this)">
+                <a href="#" class="dash-nav-item" data-tab="earnings" onclick="showTab('earnings', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
                     Earnings
                 </a>
-                <a href="#" class="dash-nav-item" onclick="showTab('profile', this)">
+                <a href="#" class="dash-nav-item" data-tab="profile" onclick="showTab('profile', this)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     My Profile
                 </a>
@@ -76,6 +76,30 @@
 
     <!-- Overlay (mobile) -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+    <!-- ===== BOTTOM TAB BAR (mobile) ===== -->
+    <nav class="dash-bottombar" id="dashBottombar">
+        <button class="bottombar-item active" data-tab="jobs" onclick="showTab('jobs', null)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            <span>Jobs</span>
+        </button>
+        <button class="bottombar-item" data-tab="quotes" onclick="showTab('quotes', null)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Quotes</span>
+        </button>
+        <button class="bottombar-item" data-tab="active" onclick="showTab('active', null)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Active</span>
+        </button>
+        <button class="bottombar-item" data-tab="earnings" onclick="showTab('earnings', null)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <span>Earnings</span>
+        </button>
+        <button class="bottombar-item" data-tab="profile" onclick="showTab('profile', null)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile</span>
+        </button>
+    </nav>
 
     <!-- ===== MAIN ===== -->
     <main class="dash-main">
