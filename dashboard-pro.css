@@ -596,3 +596,8 @@ body {
     .dash-topbar-title { font-size: 1rem; }
     .modal { max-width: calc(100vw - 32px); }
 }
+
+/* Dark mode: status pills (match customer dashboard treatment) */
+[data-theme="dark"] .mq-status.pending { background: #422006; color: #FCD34D; }
+[data-theme="dark"] .active-badge { background: #422006; color: #FCD34D; }
+[data-theme="dark"] .urgent-badge { background: #450A0A; color: #FCA5A5; }
