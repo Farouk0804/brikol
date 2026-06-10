@@ -105,10 +105,10 @@
                                 </div>
                                 <div class="notif-dot"></div>
                             </div>
-                            <div class="notif-item unread" onclick="markRead(this)">
+                            <div class="notif-item unread" onclick="markRead(this); openReviewModal('Cleaning — Full apartment deep clean', 'Amina R.', 'A')">
                                 <div class="notif-icon yellow">⭐</div>
                                 <div class="notif-body">
-                                    <div class="notif-text">Job completed — <strong>leave a review</strong> for Fatima B.</div>
+                                    <div class="notif-text">Job completed — <strong>leave a review</strong> for Amina R.</div>
                                     <div class="notif-time">3 hrs ago</div>
                                 </div>
                                 <div class="notif-dot"></div>
@@ -423,6 +423,17 @@
 
             <div class="history-list">
 
+                <div class="history-card" id="reviewableJob">
+                    <div class="history-icon">🧹</div>
+                    <div class="history-info">
+                        <div class="history-title">Cleaning — Full apartment deep clean</div>
+                        <div class="history-meta">Completed today · Amina R. · 480 MAD</div>
+                    </div>
+                    <div class="history-right">
+                        <button class="btn btn-primary btn-sm review-cta" onclick="openReviewModal('Cleaning — Full apartment deep clean', 'Amina R.', 'A')">⭐ Leave a review</button>
+                    </div>
+                </div>
+
                 <div class="history-card">
                     <div class="history-icon">🧹</div>
                     <div class="history-info">
@@ -525,6 +536,46 @@
 
     <!-- Mobile overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- ===== REVIEW MODAL ===== -->
+    <div class="review-overlay hidden" id="reviewModal">
+        <div class="review-modal">
+            <button class="review-close" onclick="closeReviewModal()">✕</button>
+
+            <div class="review-pro">
+                <div class="review-pro-avatar" id="reviewProAvatar">A</div>
+                <div>
+                    <div class="review-modal-title">How was <span id="reviewProName">Amina R.</span>?</div>
+                    <div class="review-job-name" id="reviewJobName">Cleaning — Full apartment deep clean</div>
+                </div>
+            </div>
+
+            <!-- Star picker -->
+            <div class="star-picker" id="starPicker">
+                <button class="star-btn" onclick="setStar(1)">★</button>
+                <button class="star-btn" onclick="setStar(2)">★</button>
+                <button class="star-btn" onclick="setStar(3)">★</button>
+                <button class="star-btn" onclick="setStar(4)">★</button>
+                <button class="star-btn" onclick="setStar(5)">★</button>
+            </div>
+            <div class="star-label" id="starLabel">Tap a star to rate</div>
+
+            <!-- Quick praise chips -->
+            <div class="praise-chips" id="praiseChips">
+                <button class="praise-chip" onclick="toggleChip(this)">⏰ On time</button>
+                <button class="praise-chip" onclick="toggleChip(this)">💼 Professional</button>
+                <button class="praise-chip" onclick="toggleChip(this)">✨ Clean work</button>
+                <button class="praise-chip" onclick="toggleChip(this)">💰 Fair price</button>
+                <button class="praise-chip" onclick="toggleChip(this)">😊 Friendly</button>
+            </div>
+
+            <!-- Comment -->
+            <textarea class="review-textarea" id="reviewText" rows="3" maxlength="400"
+                placeholder="Tell other customers about your experience (optional)…"></textarea>
+
+            <button class="btn btn-primary review-submit" id="reviewSubmitBtn" onclick="submitReview()" disabled>Submit review</button>
+        </div>
+    </div>
 
     <script src="dashboard-customer.js"></script>
 </body>

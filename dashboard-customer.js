@@ -166,3 +166,91 @@ document.addEventListener('click', (e) => {
         document.getElementById('notifDropdown').classList.add('hidden');
     }
 });
+
+// ===== REVIEW MODAL =====
+let reviewStars = 0;
+
+const starLabels = {
+    1: 'Poor',
+    2: 'Not great',
+    3: 'Okay',
+    4: 'Good',
+    5: 'Excellent!',
+};
+
+function openReviewModal(jobTitle, proName, avatarLetter) {
+    document.getElementById('reviewJobName').textContent = jobTitle;
+    document.getElementById('reviewProName').textContent = proName;
+    document.getElementById('reviewProAvatar').textContent = avatarLetter;
+    reviewStars = 0;
+    document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('lit'));
+    document.querySelectorAll('.praise-chip').forEach(c => c.classList.remove('selected'));
+    document.getElementById('reviewText').value = '';
+    document.getElementById('starLabel').textContent = 'Tap a star to rate';
+    document.getElementById('reviewSubmitBtn').disabled = true;
+    document.getElementById('reviewModal').classList.remove('hidden');
+}
+
+function closeReviewModal() {
+    document.getElementById('reviewModal').classList.add('hidden');
+}
+
+function setStar(n) {
+    reviewStars = n;
+    document.querySelectorAll('.star-btn').forEach((b, i) => {
+        b.classList.toggle('lit', i < n);
+    });
+    document.getElementById('starLabel').textContent = starLabels[n];
+    document.getElementById('reviewSubmitBtn').disabled = false;
+}
+
+function toggleChip(chip) {
+    chip.classList.toggle('selected');
+}
+
+function submitReview() {
+    if (!reviewStars) return;
+
+    closeReviewModal();
+
+    // Update the history card to its reviewed state
+    const card = document.getElementById('reviewableJob');
+    if (card) {
+        const right = card.querySelector('.history-right');
+        right.innerHTML = `
+            <div class="history-reviewed-stars">${'★'.repeat(reviewStars)}${'☆'.repeat(5 - reviewStars)}</div>
+            <div class="history-reviewed-note">✓ Review submitted</div>
+        `;
+    }
+
+    showReviewToast('Thank you! Your review helps other customers.');
+}
+
+function showReviewToast(message) {
+    const existing = document.getElementById('custToast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.id = 'custToast';
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%);
+        background: #16A34A; color: white;
+        padding: 12px 24px; border-radius: 100px;
+        font-size: 0.875rem; font-weight: 700;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        z-index: 9999; white-space: nowrap;
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+}
+
+// Close review modal on overlay click
+document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('reviewModal');
+    if (overlay) {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closeReviewModal();
+        });
+    }
+});
