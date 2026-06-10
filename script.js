@@ -47,6 +47,7 @@ let ticking = false;
 
 function onScroll() {
     const y = window.scrollY;
+    if (!navbar) { ticking = false; return; }
 
     // Navbar background
     navbar.classList.toggle('scrolled', y > 20);
@@ -88,14 +89,16 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-});
+if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+    });
 
-// Close mobile menu on link click
-mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+}
 
 // Language switcher
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -165,8 +168,8 @@ function handleSearch() {
     window.location.href = `service.html?type=${service}&city=${city}`;
 }
 
-// Notify form
-document.getElementById('notifyForm').addEventListener('submit', e => {
+// Notify form (only exists on the homepage)
+document.getElementById('notifyForm')?.addEventListener('submit', e => {
     e.preventDefault();
     const input = e.target.querySelector('input');
     const btn = e.target.querySelector('button');
