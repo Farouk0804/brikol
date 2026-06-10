@@ -34,12 +34,55 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLogos(theme);
 });
 
-// ===== NAVBAR SCROLL =====
-// Navbar scroll effect
+// ===== SCROLL MOTION ENGINE =====
+// One rAF loop drives: navbar state, smart hide/show, parallax blobs, hero fade
 const navbar = document.getElementById('navbar');
+const heroBg = document.querySelector('.hero-bg');
+const heroContent = document.querySelector('.hero-content');
+const blobs = document.querySelectorAll('.hero-blob');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lastY = window.scrollY;
+let ticking = false;
+
+function onScroll() {
+    const y = window.scrollY;
+
+    // Navbar background
+    navbar.classList.toggle('scrolled', y > 20);
+
+    // Smart navbar: hide scrolling down, show scrolling up (only after hero)
+    if (y > 400 && y > lastY + 4) {
+        navbar.classList.add('nav-hidden');
+    } else if (y < lastY - 4 || y < 400) {
+        navbar.classList.remove('nav-hidden');
+    }
+    lastY = y;
+
+    if (!reducedMotion) {
+        // Parallax: blobs drift at different speeds
+        blobs.forEach((blob, i) => {
+            const speed = [0.25, 0.4, 0.15][i] || 0.2;
+            blob.style.transform = `translateY(${y * speed}px)`;
+        });
+
+        // Hero content gently fades and rises away as you scroll past
+        if (heroContent && y < window.innerHeight) {
+            const progress = Math.min(y / (window.innerHeight * 0.8), 1);
+            heroContent.style.opacity = 1 - progress * 0.6;
+            heroContent.style.transform = `translateY(${y * 0.12}px)`;
+        }
+    }
+
+    ticking = false;
+}
+
 window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
+    if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+    }
+}, { passive: true });
 
 // Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
@@ -156,3 +199,16 @@ document.querySelectorAll('.step-card, .service-card, .testimonial-card, .why-fe
     el.style.transition = `opacity 0.5s ease ${delay}s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`;
     fadeObserver.observe(el);
 });
+
+// Class-based reveals: section headers (blur-to-sharp) and side slide-ins
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section-header, .why-features, .why-visual, .become-pro-content, .become-pro-visual')
+    .forEach(el => revealObserver.observe(el));

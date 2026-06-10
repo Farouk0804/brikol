@@ -1534,3 +1534,50 @@ body { overflow-x: hidden; }
         scroll-behavior: auto !important;
     }
 }
+
+/* ===== SCROLL MOTION ===== */
+
+/* Smart navbar: slides away scrolling down, returns scrolling up */
+.navbar { will-change: transform; }
+.navbar.nav-hidden { transform: translateY(-100%); }
+
+/* Section headers: blur-to-sharp rise on reveal */
+.section-header {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+}
+.section-header.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* Why-section + Become a Pro: content and visual slide in from opposite sides */
+.why-features, .become-pro-content {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.why-visual, .become-pro-visual {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.why-visual.revealed, .why-features.revealed,
+.become-pro-visual.revealed, .become-pro-content.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Blobs need will-change for smooth parallax */
+.hero-blob { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+    .section-header, .why-visual, .why-features,
+    .become-pro-visual, .become-pro-content {
+        opacity: 1; transform: none; filter: none; transition: none;
+    }
+    .navbar.nav-hidden { transform: none; }
+}
