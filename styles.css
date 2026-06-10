@@ -1037,10 +1037,15 @@ img { max-width: 100%; }
 }
 
 .earnings-card {
-    background: white;
+    background: var(--white);
     border-radius: var(--radius);
     padding: 28px;
     box-shadow: var(--shadow-lg);
+}
+
+[data-theme="dark"] .earnings-card {
+    background: #1E293B;
+    border: 1px solid #334155;
 }
 
 .earnings-title {
