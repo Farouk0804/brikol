@@ -6,20 +6,23 @@
     --primary-dark: #1D4ED8;
     --primary-light: #EFF6FF;
     --accent: #F59E0B;
+    --terracotta: #C2552B;      /* Moroccan clay — warm accent */
+    --terracotta-light: #FBEEE7;
+    --sand: #FAF6EF;            /* warm page tint */
     --dark: #0F172A;
     --gray-900: #1E293B;
     --gray-700: #334155;
     --gray-500: #64748B;
     --gray-300: #CBD5E1;
-    --gray-100: #F1F5F9;
+    --gray-100: #F4F0E8;        /* warmed from cool slate to sand */
     --white: #FFFFFF;
     --cleaning: #10B981;
     --plumbing: #2563EB;
     --electricity: #F59E0B;
     --radius: 16px;
     --radius-sm: 10px;
-    --shadow: 0 4px 24px rgba(15,23,42,0.08);
-    --shadow-lg: 0 12px 48px rgba(15,23,42,0.14);
+    --shadow: 0 4px 24px rgba(60,42,20,0.08);
+    --shadow-lg: 0 12px 48px rgba(60,42,20,0.14);
 }
 
 /* ===== DARK MODE VARIABLES ===== */
@@ -32,6 +35,9 @@
     --gray-100: #1E293B;
     --white: #0F172A;
     --primary-light: #1E3A5F;
+    --terracotta: #E8744A;
+    --terracotta-light: #2D1A0E;
+    --sand: #0F172A;
     --shadow: 0 4px 24px rgba(0,0,0,0.3);
     --shadow-lg: 0 12px 48px rgba(0,0,0,0.4);
 }
@@ -129,11 +135,21 @@
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--gray-900);
     background: var(--white);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* Display typeface — Bricolage Grotesque, the font that shares Brikol's roots
+   (bricolage = handiwork). Used for all headings and brand moments. */
+h1, h2, h3,
+.hero-title, .section-title, .logo,
+.stat-number, .earnings-amount,
+.pj-header-title, .pp-name {
+    font-family: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+    letter-spacing: -0.01em;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -194,8 +210,8 @@ img { max-width: 100%; }
 .section-tag {
     display: inline-block;
     padding: 6px 16px;
-    background: var(--primary-light);
-    color: var(--primary);
+    background: var(--terracotta-light);
+    color: var(--terracotta);
     border-radius: 100px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -373,8 +389,21 @@ img { max-width: 100%; }
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 60%, #FEF3C7 100%);
+    background: linear-gradient(135deg, #EBF2FE 0%, #FAF6EF 55%, #FAEBDD 100%);
 }
+
+/* Zellige-inspired eight-point star lattice, whisper-quiet */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232563EB' stroke-width='1'%3E%3Cpath d='M28 10 L32 24 L46 28 L32 32 L28 46 L24 32 L10 28 L24 24 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 56px 56px;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .hero-bg::after { opacity: 0.04; }
 
 .hero-blob {
     position: absolute;
@@ -419,6 +448,21 @@ img { max-width: 100%; }
 
 .hero-title .highlight {
     color: var(--primary);
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Hand-drawn terracotta underline beneath the highlight */
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    left: 2%;
+    bottom: -6px;
+    width: 96%;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 12' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cpath d='M3 9 C 50 3, 100 11, 197 5' fill='none' stroke='%23C2552B' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 .hero-subtitle {
@@ -1179,7 +1223,20 @@ img { max-width: 100%; }
     background: #0F172A;
     color: rgba(255,255,255,0.7);
     padding: 72px 0 32px;
+    position: relative;
 }
+
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1'%3E%3Cpath d='M28 10 L32 24 L46 28 L32 32 L28 46 L24 32 L10 28 L24 24 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 56px 56px;
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.footer .container { position: relative; }
 
 [data-theme="dark"] .footer {
     background: #020817;
